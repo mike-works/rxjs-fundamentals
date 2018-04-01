@@ -1,0 +1,11 @@
+{
+  "tslint.jsEnable": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "mocha.options": {
+    "compilers": {
+      "ts": "ts-node/register"
+    }
+  },
+  "mocha.files.glob": "test/**/*.test.ts",
+  "mocha.requires": ["ts-node/register"]
+}

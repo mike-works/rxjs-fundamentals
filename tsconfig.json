@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "types": ["mocha", "node"],
+    "module": "commonjs",
+    "target": "es2015",
+    "inlineSourceMap": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "strict": true,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*.js", "src/**/*.ts", "test/**/*.js", "test/**/*.ts"]
+}
