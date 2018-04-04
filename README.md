@@ -4,48 +4,32 @@
   </a> 
 </p>
 <p align='center'>
-  <a href="https://mike.works/course/sql-fundamentals-ad811af" target='_blank'>
-    <img height=150 src='https://user-images.githubusercontent.com/558005/33009968-b8a0ea60-cd7c-11e7-81af-b48a6273b12b.png' />
+  <a href="https://mike.works/course/rxjs-fundamentals-c26ec72" target='_blank'>
+    <img height=150 src='https://user-images.githubusercontent.com/558005/38284417-f86a8a7c-376f-11e8-8409-7b8847c5f234.png' />
   </a>
 </p>
+
 <p align='center'>
-  <a href="https://mike.works/course/professional-sql-c9c7184" target='_blank'>
-    <img height=150 src='https://user-images.githubusercontent.com/558005/38008070-40db7658-3212-11e8-879e-7efcf767777e.png' />
+  <a href="https://travis-ci.org/mike-works/rxjs-fundamentals?branch=solutions" title="Build Status">
+    <img title="Build Status" src="https://travis-ci.org/mike-works/rxjs-fundamentals.svg?branch=solutions"/>
   </a>
-</p>
-<p align='center'>
-  <a href="https://travis-ci.org/mike-works/sql-fundamentals?branch=solutions-pro" title="Build Status">
-    <img title="Build Status" src="https://travis-ci.org/mike-works/sql-fundamentals.svg?branch=solutions-pro"/>
-  </a>
-  <a href="https://mike.works/course/sql-fundamentals-ad811af" title="SQL Fundamentals">
+  <a href="https://mike.works/course/rxjs-fundamentals-c26ec72" title="RxJS Fundamentals">
     <img title="Course Outline" src="https://img.shields.io/badge/mike.works-course%20outline-blue.svg"/>
   </a>
-  <a href="https://docs.mike.works/sql-slides" title="Slides">
+  <a href="https://docs.mike.works/rxjs-slides" title="Slides">
     <img title="Slides" src="https://img.shields.io/badge/mike.works-slides-blue.svg"/>
   </a>
   <a title='GreenKeeper'>
-    <img title='GreenKeeper' src='https://badges.greenkeeper.io/mike-works/sql-fundamentals.svg'>
+    <img title='GreenKeeper' src='https://badges.greenkeeper.io/mike-works/rxjs-fundamentals.svg'>
   </a>
 </p>
 <p align='center'>
-This is the example project used for the <a title="Mike.Works" href="https://mike.works">Mike.Works</a> <a title="SQL Fundamentals" href="https://mike.works/course/sql-fundamentals-ad811af">SQL Fundamentals</a> and <a title="Professional SQL" href="https://mike.works/course/professional-sql-c9c7184">Professional SQL</a> courses.
+This is the example project used for the <a title="Mike.Works" href="https://mike.works">Mike.Works</a> <a title="RxJS Fundamentals" href="https://mike.works/course/rxjs-fundamentals-c26ec72">RxJS Fundamentals</a> course.
 </p>
 
 # Where are the slides?
 
-* [SQL Fundamentals](https://mike.works/course/sql-fundamentals-ad811af) slides are [here](https://docs.mike.works/sql-slides)
-* [Professional SQL](https://mike.works/course/professional-sql-c9c7184) slides are [here](https://docs.mike.works/pro-sql-slides)
-
-# What are we building?
-
-We'll be working with several flavors of the [Northwind Database](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases), which Microsoft uses to demonstrate a wide range of features across their MS Access and MS SQL Server product lines. You'll be writing some application code in a small [Node.js](https://nodejs.org) web application (built with [Express](https://expressjs.com)) to view and make changes to this data.
-
-
-<p align="center">
-<img height=400 src="https://user-images.githubusercontent.com/558005/35312473-7646b68c-0070-11e8-83df-25800047b763.png" />
-</p>
-
-This app is not in a good state at the beginning of the workshop. Features are missing, there are major performances, and quite a few database-related bugs. We'll fix all these problems and learn as we go!
+* [RxJS Fundamentals](https://mike.works/course/rxjs-fundamentals-c26ec72) slides are [here](https://docs.mike.works/rxjs-slides)
 
 # Setup Instructions
 
@@ -124,8 +108,8 @@ npm run test:ex:watch 4
 
 | Solutions Branch                                                                               | Status                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [SQL Fundamentals](https://github.com/mike-works/sql-fundamentals/tree/solutions-fundamentals) | [![Build Status](https://travis-ci.org/mike-works/sql-fundamentals.svg?branch=solutions-fundamentals)](https://travis-ci.org/mike-works/sql-fundamentals?branch=solutions-fundamentals) |
-| [SQL Pro](https://github.com/mike-works/sql-fundamentals/tree/solutions-pro)                   | [![Build Status](https://travis-ci.org/mike-works/sql-fundamentals.svg?branch=solutions-pro)](https://travis-ci.org/mike-works/sql-fundamentals?branch=solutions-pro)                   |
+| [RxJS Fundamentals](https://github.com/mike-works/rxjs-fundamentals/tree/solutions) | [![Build Status](https://travis-ci.org/mike-works/rxjs-fundamentals.svg?branch=solutions)](https://travis-ci.org/mike-works/rxjs-fundamentals?branch=solutions) |
+
 
 # License
 
