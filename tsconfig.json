@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["mocha", "node"],
     "module": "commonjs",
     "target": "es2015",
     "inlineSourceMap": true,
@@ -11,7 +10,7 @@
     "outDir": "dist",
     "baseUrl": ".",
     "strict": true,
-    "noImplicitAny": true
+    "noImplicitAny": false
   },
-  "include": ["src/**/*.js", "src/**/*.ts", "test/**/*.js", "test/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

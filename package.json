@@ -4,14 +4,23 @@
   "description": "Mike Works, Inc. RxJS 6 workshop",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "build": "./node_modules/.bin/tsc",
+    "start": "node ./dist/index.js",
+    "watch": "./node_modules/.bin/nodemon -x \"npm run build; npm start\"",
+    "test": "scripty",
+    "test:ex": "scripty",
+    "test:ex:watch": "scripty",
     "test:watch": "./node_modules/.bin/mocha-typescript-watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mike-works/rx-workshop.git"
   },
-  "keywords": ["rxjs", "workshop", "training"],
+  "keywords": [
+    "rxjs",
+    "workshop",
+    "training"
+  ],
   "author": "Mike North <michael.l.north@gmail.com> (https://mike.works)",
   "license": "BSD-3-Clause",
   "bugs": {
@@ -23,6 +32,8 @@
     "chai": "^4.1.2",
     "mocha": "^5.0.5",
     "mocha-typescript": "^1.1.12",
+    "nodemon": "^1.17.3",
+    "scripty": "^1.7.2",
     "source-map-support": "^0.5.4",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",

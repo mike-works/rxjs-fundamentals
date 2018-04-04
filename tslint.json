@@ -1,8 +1,9 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "no-var-keyword": true,
-    "no-unused-variable": [true],
+    "no-unused-variable": [
+      true
+    ],
     "no-console": true,
     "semicolon": false,
     "space-before-function-paren": false,
@@ -18,31 +19,18 @@
       }
     ],
     "quotemark": false,
-    "arrow-parens": [false],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
-    "await-promise": true,
-    "prefer-const": true
-  },
-  "jsRules": {
-    "no-var-keyword": true,
-    "no-unused-variable": [true],
-    "no-console": true,
-    "semicolon": false,
-    "space-before-function-paren": false,
-    "trailing-comma": false,
-    "max-line-length": false,
-    "object-literal-sort-keys": false,
-    "ordered-imports": [
-      true,
-      {
-        "import-sources-order": "lowercase-last",
-        "named-imports-order": "lowercase-first"
-      }
+    "arrow-parens": [
+      false
     ],
-    "quotemark": false,
-    "arrow-parens": [false],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
     "await-promise": true,
-    "prefer-const": true
+    "prefer-const": [
+      false
+    ]
   }
 }

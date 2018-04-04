@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 const o = new Observable<{ v: number }>(subscriber => {
-  let c = 0;
+  let c = 4;
   const task = setInterval(() => {
     subscriber.next({ v: c++ });
     if (c > 10) {

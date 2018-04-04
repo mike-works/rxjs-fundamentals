@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { slow, suite, test, timeout } from 'mocha-typescript';
 
-@suite
+@suite("EX00: Initial tests")
 class Hello {
   @test
   public async world2() {
