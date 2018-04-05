@@ -12,5 +12,5 @@
     "strict": true,
     "noImplicitAny": false
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.js", "test/**/*.ts", "test/**/*.js", "./webpack.config.js"]
 }
