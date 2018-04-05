@@ -1,10 +1,8 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "no-unused-variable": [
-      true
-    ],
-    "no-console": true,
+    "no-unused-variable": [true],
+    "no-console": false,
     "semicolon": false,
     "space-before-function-paren": false,
     "interface-name": false,
@@ -19,25 +17,14 @@
       }
     ],
     "quotemark": false,
-    "arrow-parens": [
-      false
-    ],
-    "variable-name": [
-      true,
-      "ban-keywords",
-      "check-format",
-      "allow-leading-underscore"
-    ],
+    "arrow-parens": [false],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "await-promise": true,
-    "prefer-const": [
-      false
-    ]
+    "prefer-const": [false]
   },
   "jsrules": {
-    "no-unused-variable": [
-      true
-    ],
-    "no-console": true,
+    "no-unused-variable": [true],
+    "no-console": false,
     "semicolon": false,
     "space-before-function-paren": false,
     "interface-name": false,
@@ -52,18 +39,9 @@
       }
     ],
     "quotemark": false,
-    "arrow-parens": [
-      false
-    ],
-    "variable-name": [
-      true,
-      "ban-keywords",
-      "check-format",
-      "allow-leading-underscore"
-    ],
+    "arrow-parens": [false],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
     "await-promise": true,
-    "prefer-const": [
-      false
-    ]
+    "prefer-const": [false]
   }
 }
