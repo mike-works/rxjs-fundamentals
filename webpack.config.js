@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    pong: './src/pong/index.ts'
+    index: './src/index.ts',
+    pong: './src/pong/index.ts',
+    'demo-async-shortcomings': './src/demo/1-async-shortcomings.ts'
   },
   mode: 'development',
   module: {
@@ -30,11 +32,12 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      chunks: ['index'],
       template: './src/index.hbs'
     }),
     new HtmlWebpackPlugin({
@@ -42,6 +45,12 @@ module.exports = {
       filename: './pong/index.html',
       chunks: ['pong'],
       template: './src/pong/index.hbs'
+    }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      filename: './demo/async-shortcomings/index.html',
+      chunks: ['demo-async-shortcomings'],
+      template: './src/demo/1-async-shortcomings/index.hbs'
     })
   ],
   resolve: {
