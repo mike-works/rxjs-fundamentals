@@ -1,6 +1,7 @@
 {
   "tslint.jsEnable": true,
   "javascript.implicitProjectConfig.checkJs": true,
+  "editor.formatOnSave": true,
   "mocha.options": {
     "compilers": {
       "ts": "ts-node/register"

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const titleize = require('titleize');
 
 const DEMOS = ['async-shortcomings', 'generator-function', 'compose-pipe'];
-const EXERCISES = ['pong'];
+const EXERCISES = ['array-hof', 'pong'];
 
 const generateExampleInfo = (key, arr) => arr.map((item, idx) => {
   const id = idx + 1;
