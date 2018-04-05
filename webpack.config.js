@@ -5,8 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     index: './src/index.ts',
-    pong: './src/pong/index.ts',
-    'demo-async-shortcomings': './src/demo/1-async-shortcomings.ts'
+    pong: './src/exercise/pong/index.ts',
+    'demo-async-shortcomings': './src/demo/1-async-shortcomings/index.ts'
   },
   mode: 'development',
   module: {
@@ -42,13 +42,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      filename: './pong/index.html',
+      filename: './exercise/pong/index.html',
       chunks: ['pong'],
-      template: './src/pong/index.hbs'
+      template: './src/exercise/pong/index.hbs'
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      filename: './demo/async-shortcomings/index.html',
+      filename: './demo/1-async-shortcomings/index.html',
       chunks: ['demo-async-shortcomings'],
       template: './src/demo/1-async-shortcomings/index.hbs'
     })
