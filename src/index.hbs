@@ -2,9 +2,15 @@
 
 <h4>Demos</h4>
 <ol>
-  <li><a href="/demo/1-async-shortcomings">Async Shortcomings</a></li>
+  {{#each demos as |demo| }}
+  <li><a href={{demo.menuLink.url}}>{{demo.menuLink.text}}</a></li>
+  {{/each}}
 </ol>
 <h4>Exercises</h4>
 <ol>
-  <li><a href='/exercise/pong'>Pong</a></li>
+  {{#each exercises as |exercise| }}
+  <li>
+    <a href={{exercise.menuLink.url}}>{{exercise.menuLink.text}}</a>
+  </li>
+  {{/each}}
 </ol>
