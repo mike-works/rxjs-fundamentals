@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { slow, suite, test, timeout } from 'mocha-typescript';
 import * as coll from '../src/exercise/1-array-hof/index';
 
-@suite('EX01: Array higher-order function tests')
+@suite('EX01: Array Higher-Order Functions')
 class ArrayHofTests {
   @test('collection-utils.js exports')
   public async exportsArePresent() {
