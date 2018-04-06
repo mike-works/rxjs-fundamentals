@@ -1,6 +1,9 @@
-import { from, fromEvent, of, Observable, bindCallback } from 'rxjs';
+import { bindCallback, from, fromEvent, of, Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
+import { first, take, toArray } from 'rxjs/operators';
+import '../../common/ajax';
 import { addLogPanelMessage } from '../../common/log-panel';
+import { buttonOne, requestLocation, requestNotificationPermission } from './fixtures';
 /**
  * - EXERCISE 2.A
  * > Create an observable from the click event on
@@ -14,11 +17,11 @@ import { addLogPanelMessage } from '../../common/log-panel';
  *    to log the x and y coordinates of the click to the screen
  */
 
-fromEvent<MouseEvent>(document.getElementById('button1') as HTMLButtonElement, 'click').subscribe(
-  me => {
-    addLogPanelMessage('panel2a', `Mouse ${me.x}, ${me.y}`);
-  }
-);
+export const observableFromEvent = fromEvent<MouseEvent>(buttonOne, 'click');
+
+observableFromEvent.subscribe(me => {
+  addLogPanelMessage('panel2a', `Mouse ${me.x}, ${me.y}`);
+});
 
 /**
  * - Exercise 2.B
@@ -31,7 +34,9 @@ fromEvent<MouseEvent>(document.getElementById('button1') as HTMLButtonElement, '
  * ?     addLogPanelMessage('panel2b', ... );
  */
 
-ajax('https://api.mike.works/api/v1/courses').subscribe(({ response }) => {
+export const observableFromAjax = ajax('https://api.mike.works/api/v1/courses');
+
+observableFromAjax.subscribe(({ response }) => {
   response.data.forEach(course => {
     addLogPanelMessage(
       'panel2b',
@@ -51,8 +56,34 @@ ajax('https://api.mike.works/api/v1/courses').subscribe(({ response }) => {
  * ?     addLogPanelMessage('panel2c', ... );
  */
 
-from(Notification.requestPermission()).subscribe(r => {
+export const observableFromPromise = from(requestNotificationPermission());
+
+observableFromPromise.subscribe(r => {
   addLogPanelMessage('panel2c', `Notification permission: ${r.toUpperCase()}`);
+});
+
+/**
+ * - Exercise 2.D
+ * > Create an observable that repeatedly generates random numbers between 1 and 100,
+ *   waits that many milliseconds, and then emits the number. Immediately after it
+ *   generates a number > 90 and emits it, the observable should complete
+ *
+ * ?     addLogPanelMessage('panel2d', ... );
+ */
+export const newObservable = new Observable<number>(observer => {
+  function scheduleNextVal() {
+    let x = Math.round(Math.random() * 100);
+    observer.next(x);
+    if (x > 90) {
+      observer.complete();
+    } else {
+      setTimeout(scheduleNextVal, x);
+    }
+  }
+  scheduleNextVal();
+});
+newObservable.subscribe(v => {
+  addLogPanelMessage('panel2d', `Random wait: ${v}ms`);
 });
 
 /**
@@ -72,23 +103,8 @@ from(Notification.requestPermission()).subscribe(r => {
  * ?    addLogPanelMessage('panel2e', ... );
  */
 
-new Observable(observer => {
-  function scheduleNextVal() {
-    let x = Math.round(Math.random() * 1000);
-    observer.next(x);
-    if (x > 950) {
-      observer.complete();
-    } else {
-      setTimeout(scheduleNextVal, x);
-    }
-  }
-  scheduleNextVal();
-}).subscribe(v => {
-  addLogPanelMessage('panel2d', `Random wait: ${v}ms`);
-});
+export const observableFromCallback = bindCallback<Position>(requestLocation)();
 
-bindCallback<Position>(
-  navigator.geolocation.getCurrentPosition.bind(navigator.geolocation)
-)().subscribe(p => {
+observableFromCallback.subscribe(p => {
   addLogPanelMessage('panel2e', `Position: ${p.coords.latitude}, ${p.coords.longitude}`);
 });
