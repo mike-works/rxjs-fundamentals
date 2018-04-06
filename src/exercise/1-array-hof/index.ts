@@ -1,106 +1,156 @@
-/**
- * Invoke a function for each item in an array
- *
- * @export
- * @param array Array to iterate over
- * @param callbackfn function to invoke on each element
- */
+import { addLogPanelMessage } from '../../common/log-panel';
+import { every, filter, forEach, map, reduce, some } from './collection-utils';
 
-export function forEach<T>(
-  array: T[],
-  callbackfn: (value: T, index: number, array: T[]) => void
-): void {
-  // TODO: ↓ Replace this with your own solution ↓
-  array.forEach(callbackfn);
-  // ! Do not use [].forEach or other higher-order functions. That's cheating!
+/**
+ * - Exercise 1.A
+ */
+addLogPanelMessage(
+  'panel1a',
+  'Attempting to use forEach to iterate over [1, 2, 3] and calculate the sum'
+);
+try {
+  let sum = 0;
+  forEach([1, 2, 3], x => (sum += x));
+  if (sum === 6) {
+    addLogPanelMessage('panel1a', `✅ Result was ${sum}`);
+  } else {
+    addLogPanelMessage('panel1a', `❌ Result was ${sum} (expected: 6)`);
+  }
+} catch (e) {
+  addLogPanelMessage('panel1a', `ERROR: ${e}`);
 }
 
 /**
- * Create a transformed copy of an array, where
- * a transformation function is applied to each item
- *
- * @export
- * @param array list of items to transoform
- * @param callbackfn transformation function
- * @return transformed items
+ * - Exercise 1.B
  */
-export function map<T, U>(array: T[], callbackfn: (value: T, index: number, array: T[]) => U): U[] {
-  // TODO: ↓ Replace this with your own solution ↓
-  return array.map(callbackfn);
-  // ! Do not use [].map or other higher-order functions. That's cheating!
+addLogPanelMessage('panel1b', 'Attempting to use map to square each of [1, 2, 3]');
+try {
+  let squares = map([1, 2, 3], x => x * x);
+  if (squares.length === 3) {
+    addLogPanelMessage('panel1b', `✅ array returned by map() has 3 elements`);
+  } else {
+    addLogPanelMessage(
+      'panel1b',
+      `❌ array returned by map() has ${squares.length} elements (expected: 3)`
+    );
+  }
+  if (JSON.stringify(squares) === JSON.stringify([1, 4, 9])) {
+    addLogPanelMessage('panel1b', `✅ array returned by map() has correct elements`);
+  } else {
+    addLogPanelMessage(
+      'panel1b',
+      `❌ array returned by map() has incorrect elements: ${JSON.stringify(
+        squares
+      )} (expected: ${JSON.stringify([1, 4, 9])})`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1b', `ERROR: ${e}`);
 }
 
 /**
- * Create a filtered array, given an original array and
- * a filtering function to be invoked on each element.
- * Only those elements where the filtering function returns
- * true will be in the returned filtered array.
- *
- * @export
- * @param {array} array original array
- * @param {function} func filtering function
- * @return {array} filtered array
+ * - Exercise 1.C
  */
 
-export function filter<T>(
-  array: T[],
-  callbackfn: (value: T, index?: number, array?: T[]) => boolean
-): T[] {
-  // TODO: ↓ Replace this with your own solution ↓
-  return array.filter(callbackfn);
-  // ! Do not use [].filter or other higher-order functions. That's cheating!
+addLogPanelMessage(
+  'panel1c',
+  'Attempting to use filter to identify elements of [1, 2, 3] that are even'
+);
+try {
+  let filtered = filter([1, 2, 3], x => x % 2 === 0);
+  if (filtered.length === 1) {
+    addLogPanelMessage('panel1c', `✅ array returned by filter() has 1 element`);
+  } else {
+    addLogPanelMessage(
+      'panel1c',
+      `❌ array returned by filter() has ${filtered.length} elements (expected: 3)`
+    );
+  }
+  if (JSON.stringify(filtered) === JSON.stringify([2])) {
+    addLogPanelMessage('panel1c', `✅ array returned by filter() has correct elements`);
+  } else {
+    addLogPanelMessage(
+      'panel1c',
+      `❌ array returned by filter() has incorrect elements: ${JSON.stringify(
+        filtered
+      )} (expected: ${JSON.stringify([2])})`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1c', `ERROR: ${e}`);
 }
 
 /**
- * Generate a singular value by iterating over an array.
- * More info: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
- *
- * @export
- * @param array original array
- * @param callbackfn reducer function
- * @param initialValue initial value of accumulator
- * @return ultimate value of the accumulator
+ * - Exercise 1.D
  */
-export function reduce<T, U>(
-  array: T[],
-  callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
-  initialValue: U
-): U {
-  // TODO: ↓ Replace this with your own solution ↓
-  return array.reduce(callbackfn, initialValue);
-  // ! Do not use [].reduce or other higher-order functions. That's cheating!
+
+addLogPanelMessage('panel1d', 'Attempting to use reduce to sum elements [1, 2, 3]');
+try {
+  let reduced = reduce([1, 2, 3], (acc, item) => acc + item, 0);
+  if (reduced === 6) {
+    addLogPanelMessage('panel1d', `✅ value returned by reduce() is correct`);
+  } else {
+    addLogPanelMessage(
+      'panel1d',
+      `❌ array returned by reduce() was incorrect: ${reduced} (expected: 6)`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1d', `ERROR: ${e}`);
 }
 
 /**
- * Detect whether one or more elements in an array meet a condition
- *
- * @export
- * @param array original array
- * @param callbackfn condition to check on array elements
- * @return true if one or more elements in the array passes the callbackfn test
+ * - Exercise 1.E
  */
-export function some<T>(
-  array: T[],
-  callbackfn: (value: T, index: number, array: T[]) => boolean
-): boolean {
-  // TODO: ↓ Replace this with your own solution ↓
-  return array.some(callbackfn);
-  // ! Do not use [].some or other higher-order functions. That's cheating!
+
+addLogPanelMessage('panel1e', 'Attempting to use some to check for even elements [1, 2, 3, 4]');
+try {
+  let someAreEven = some([1, 2, 3, 4], x => x % 2 === 0);
+  if (someAreEven) {
+    addLogPanelMessage('panel1e', `✅ value returned by some() is correct`);
+  } else {
+    addLogPanelMessage(
+      'panel1e',
+      `❌ array returned by some() was incorrect: ${someAreEven} (expected: true)`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1e', `ERROR: ${e}`);
 }
 
 /**
- * Detect whether all elements in an array meet a condition
- *
- * @export
- * @param array original array
- * @param callbackfn condition to check on array elements
- * @return true if all in the array passes the callbackfn test
+ * - Exercise 1.F
  */
-export function every<T>(
-  array: T[],
-  callbackfn: (value: T, index: number, array: T[]) => boolean
-): boolean {
-  // TODO: ↓ Replace this with your own solution ↓
-  return array.every(callbackfn);
-  // ! Do not use [].every or other higher-order functions. That's cheating!
+
+addLogPanelMessage(
+  'panel1f',
+  'Attempting to use every to check for ALL even elements [1, 2, 3, 4]'
+);
+try {
+  let allAreEven = every([1, 2, 3, 4], x => x % 2 === 0);
+  if (!allAreEven) {
+    addLogPanelMessage('panel1f', `✅ value returned by every() is correct`);
+  } else {
+    addLogPanelMessage(
+      'panel1f',
+      `❌ array returned by every() was incorrect: ${allAreEven} (expected: false)`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1f', `ERROR: ${e}`);
+}
+
+addLogPanelMessage('panel1f', 'Attempting to use every to check for ALL even elements [2, 6, 4]');
+try {
+  let allAreEven = every([2, 6, 4], x => x % 2 === 0);
+  if (allAreEven) {
+    addLogPanelMessage('panel1f', `✅ value returned by every() is correct`);
+  } else {
+    addLogPanelMessage(
+      'panel1f',
+      `❌ array returned by every() was incorrect: ${allAreEven} (expected: true)`
+    );
+  }
+} catch (e) {
+  addLogPanelMessage('panel1f', `ERROR: ${e}`);
 }

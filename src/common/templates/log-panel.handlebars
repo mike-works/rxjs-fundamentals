@@ -1,0 +1,40 @@
+<style>
+  .log-panel {
+    background: black;
+    color: white;
+    font-family: monospace;
+    padding-top: 40px;
+    position: relative;
+  }
+
+  .log-panel .log-panel__title {
+    font-size: 1rem;
+    color: yellow;
+    font-weight: bold;
+    margin: 5px 20px;
+    position: absolute;
+    top: 5px;
+  }
+  .log-panel .log-panel__contents-container {
+    overflow-y: scroll;
+    max-height: 100px;
+    min-height: 30px;
+  }
+  .log-panel .log-panel__contents {
+    margin: 0 10px;
+    padding: 10px;
+    font-weight: normal;
+    background: #222;
+    white-space: pre-wrap;
+  }
+</style>
+{{#if id}}
+<div class="log-panel" data-panel-id={{id}}>
+  <h4 class="log-panel__title">{{title}}</h4>
+  <div class="log-panel__contents-container">
+    <pre class="log-panel__contents"></pre>
+  </div>
+</div>
+{{else}}
+  <pre style='color: red'>ERROR: No "id" parameter provided</pre>
+{{/if}}

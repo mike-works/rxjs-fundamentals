@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { slow, suite, test, timeout } from 'mocha-typescript';
-import * as coll from '../src/exercise/1-array-hof/index';
+import * as coll from '../src/exercise/1-array-hof/collection-utils';
 
 @suite('EX01: Array Higher-Order Functions')
 class ArrayHofTests {
