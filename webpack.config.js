@@ -4,23 +4,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const titleize = require('titleize');
 
 const DEMOS = ['async-shortcomings', 'generator-function', 'compose-pipe'];
-const EXERCISES = ['array-hof', 'pong'];
+const EXERCISES = ['array-hof', 'subscribe-to-observables', 'cancelling', 'pong'];
 
-const generateExampleInfo = (key, arr) => arr.map((item, idx) => {
-  const id = idx + 1;
-  return {
-    id,
-    menuLink: {
-      url: `/${key}/${id}-${item}`,
-      text: titleize(item.replace(/\-/g, ' '))
-    },
-    html: {
-      template: `./src/${key}/${id}-${item}/index.hbs`,
-      outfile: `./${key}/${id}-${item}/index.html`
-    },
-    entry: { name: `${key}/${id}-${item}/index`, file: `./src/${key}/${id}-${item}/index.ts` }
-  };
-}, {});
+const generateExampleInfo = (key, arr) =>
+  arr.map((item, idx) => {
+    const id = idx + 1;
+    return {
+      id,
+      menuLink: {
+        url: `/${key}/${id}-${item}`,
+        text: titleize(item.replace(/\-/g, ' '))
+      },
+      html: {
+        template: `./src/${key}/${id}-${item}/index.hbs`,
+        outfile: `./${key}/${id}-${item}/index.html`
+      },
+      entry: { name: `${key}/${id}-${item}/index`, file: `./src/${key}/${id}-${item}/index.ts` }
+    };
+  }, {});
 
 const generateExampleEntries = arr =>
   arr.reduce((acc, item, idx) => {
@@ -92,7 +93,7 @@ module.exports = {
       template: './src/index.hbs'
     }),
     ...DEMO_HTML_PLUGINS,
-    ...EXERCISE_HTML_PLUGINS,
+    ...EXERCISE_HTML_PLUGINS
   ],
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
