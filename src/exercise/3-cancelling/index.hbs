@@ -2,6 +2,20 @@
 
 <h1>Exercise 3: Cancelling Observables</h1>
 
-<button id='button1'>Click Button 1</button>
 
-<p>Please open your developer tools</p>
+<p>
+  <button id='button1'>Start logging</button>
+</p>
+{{> '../../common/templates/log-panel' id='panel3a' title='Exercise 3.A - Implicit cancellation'}}
+<br>
+<p>
+  <button id='button2'>Start logging</button>
+  <button id='button3'>Stop logging</button>
+</p>
+{{> '../../common/templates/log-panel' id='panel3b' title='Exercise 3.B - Explicit cancellation'}}
+
+<p>
+  <button id="button4">Start</button>
+  <button id="button5">Stop</button>
+</p>
+{{> '../../common/templates/log-panel' id='panel3c' title='Exercise 3.C - Cleaning up internal resources'}}
