@@ -4,7 +4,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const titleize = require('titleize');
 
 const DEMOS = ['async-shortcomings', 'generator-function', 'compose-pipe'];
-const EXERCISES = ['array-hof', 'subscribe-to-observables', 'cancelling', 'pong'];
+const EXERCISES = [
+  'array-hof',
+  'subscribe-to-observables',
+  'cancelling',
+  'error-recovery',
+  'filtering-operators',
+  'smart-textarea',
+  'subjects',
+  'timing-operators',
+  'combining-observables',
+  'hot-and-cold',
+  'marble-tests'
+];
 
 const generateExampleInfo = (key, arr) =>
   arr.map((item, idx) => {
@@ -73,7 +85,7 @@ module.exports = {
           }
         ]
       },
-      { test: /\.hbs$/, loader: 'handlebars-loader' },
+      { test: /\.(hbs|handlebars)$/, loader: 'handlebars-loader' },
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       { test: /\.tsx?$/, loader: 'ts-loader' }
     ]
