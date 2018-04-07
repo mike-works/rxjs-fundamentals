@@ -1,7 +1,8 @@
-// tslint:disable
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const titleize = require('titleize');
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as path from 'path';
+import * as titleize from 'titleize';
+import { Configuration } from 'webpack';
+import { setupRoutes } from './api/index';
 
 const DEMOS = ['async-shortcomings', 'generator-function', 'compose-pipe'];
 const EXERCISES = [
@@ -10,7 +11,7 @@ const EXERCISES = [
   'cancelling',
   'error-recovery',
   'filtering-operators',
-  'smart-textarea',
+  'aggregate-exercise',
   'subjects',
   'timing-operators',
   'combining-observables',
@@ -24,7 +25,7 @@ const generateExampleInfo = (key, arr) =>
     return {
       id,
       menuLink: {
-        url: `/${key}/${id}-${item}`,
+        url: `/${key}/${id}-${item}/`,
         text: titleize(item.replace(/\-/g, ' '))
       },
       html: {
@@ -62,15 +63,32 @@ const EXERCISE_ENTRIES = generateExampleEntries(EXERCISE_INFO);
 const DEMO_HTML_PLUGINS = generateHtmlPlugins(DEMO_INFO);
 const EXERCISE_HTML_PLUGINS = generateHtmlPlugins(EXERCISE_INFO);
 
-module.exports = {
+const WEBPACK_CONFIG: Configuration = {
   entry: {
     index: './src/index.ts',
     ...EXERCISE_ENTRIES,
     ...DEMO_ENTRIES
   },
   mode: 'development',
+  devServer: {
+    before(app) {
+      setupRoutes(app);
+    }
+  },
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              context: 'src'
+            }
+          }
+        ]
+      },
       {
         test: /\.scss$/,
         use: [
@@ -112,3 +130,5 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.scss']
   }
 };
+
+export = WEBPACK_CONFIG;

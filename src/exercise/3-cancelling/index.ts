@@ -42,8 +42,8 @@ o4.subscribe(() => {
     let val = 0;
     let task = setInterval(() => {
       console.log('.');
-      observer.next((val += 100));
-    }, 100);
+      observer.next(val++);
+    }, 500);
     return function unsubscribe() {
       clearInterval(task);
     };

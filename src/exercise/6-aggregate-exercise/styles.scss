@@ -1,0 +1,77 @@
+.watch {
+  text-align: center;
+  .watch__container {
+    position: relative;
+    .watch__stats {
+      .watch__activity-indicator {
+        position: absolute;
+        width: 35px;
+        left: 10px;
+        top: 15px;
+        bottom: 0;
+        .activity {
+          display: none;
+          width: 36px;
+          svg {
+            fill: lawngreen;
+          }
+        }
+        &.bike {
+          .activity.bike {
+            display: block;
+          }
+        }
+
+        &.run {
+          .activity.run {
+            display: block;
+          }
+        }
+        &.swim {
+          .activity.swim {
+            display: block;
+          }
+        }
+        &.weights {
+          .activity.weights {
+            display: block;
+          }
+        }
+      }
+      .watch__stat-item {
+        margin-top: 7px;
+        &.yellow {
+          color: yellow;
+        }
+        &.cyan {
+          color: cyan;
+        }
+        &.orange {
+          color: orange;
+        }
+        &.red {
+          color: #f66;
+        }
+        .watch__stat-item-title {
+          font-size: 1rem;
+          opacity: 0.7;
+        }
+        .watch__stat-item-value {
+          font-weight: bold;
+          font-size: 1.6rem;
+        }
+      }
+      font-family: sans-serif;
+      position: absolute;
+      left: 15px;
+      padding: 10px;
+      top: 95px;
+      border-radius: 25px;
+      color: white;
+      width: 180px;
+      height: 220px;
+    }
+    display: inline-block;
+    position: relative;
+  }
+}
