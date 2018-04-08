@@ -90,8 +90,6 @@ o2.subscribe(() => {
   });
 });
 
-// let s = setupLoggingListener();
-
 /**
  * - EXERCISE 3.C - Cleaning Up Internal Resources
  */
