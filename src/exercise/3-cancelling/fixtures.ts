@@ -1,5 +1,6 @@
 import { EventTargetLike } from 'rxjs/internal/observable/fromEvent';
 import SynthEventTarget from '../../common/synth-event-target';
+import { interval, Subscription } from 'rxjs';
 
 export const synthButton1 = new SynthEventTarget();
 export const button1: EventTargetLike =
@@ -33,3 +34,29 @@ export const button5: EventTargetLike =
 
 export const synthDoc = new SynthEventTarget();
 export const doc: EventTargetLike = typeof window === 'undefined' ? synthDoc : document;
+
+let beaconCount = 0;
+export const BEACON_INFO = {
+  get beaconCount(): number {
+    return beaconCount;
+  }
+};
+
+interface Beacon {
+  subs: Subscription;
+  id: number;
+}
+
+export function setupBeacon(delay: number, callback: () => void): Beacon {
+  let subs = interval(delay).subscribe(callback);
+  let id = ++beaconCount;
+  let beacon = { subs, id };
+  console.log(`[Beacon]: Setup for #${beacon.id} (current count = ${beaconCount})`);
+  return beacon;
+}
+
+export function cleanupBeacon(beacon: Beacon) {
+  beacon.subs.unsubscribe();
+  beaconCount--;
+  console.log(`[Beacon]: Cleanup for #${beacon.id} (current count = ${beaconCount})`);
+}
