@@ -20,6 +20,7 @@
     "test/**/*.js",
     "api/**/*.js",
     "api/**/*.ts",
+    "config.ts",
     "./webpack.config.*"
   ]
 }
