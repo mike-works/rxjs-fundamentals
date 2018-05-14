@@ -9,7 +9,7 @@ import { nextValueFrom } from './helpers';
 class SubscribeToCallbackObservableTests {
   @test('Emits one Position value')
   public async valueType() {
-    let op = nextValueFrom(observableFromCallback);
+    let op = nextValueFrom(observableFromCallback());
     geoPermission$.next({
       coords: {
         latitude: 99,

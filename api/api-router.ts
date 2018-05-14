@@ -1,16 +1,13 @@
-import { Router } from 'express';
-import { MOVIEDB_V3_API_KEY } from '../config';
+import * as express from 'express';
+import bitcoinRouter from './bitcoin';
 import movieDbRouter from './moviedb';
-import { getExerciseData } from './workout/get-data';
+import workoutRouter from './workout';
 
-const API_ROUTER = Router({
-  caseSensitive: false
-});
+export default function(app) {
+  const API_ROUTER = express.Router({ caseSensitive: false });
 
-API_ROUTER.get('/ex6/workout-data', (req, res) => {
-  res.json(getExerciseData());
-});
-
-API_ROUTER.use('/moviedb', movieDbRouter);
-
-export default API_ROUTER;
+  API_ROUTER.use('/workout', workoutRouter);
+  API_ROUTER.use('/moviedb', movieDbRouter);
+  API_ROUTER.use('/bitcoin', bitcoinRouter(app));
+  return API_ROUTER;
+}

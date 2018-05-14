@@ -4,7 +4,12 @@ import * as titleize from 'titleize';
 import { Configuration } from 'webpack';
 import { setupRoutes } from './api/index';
 
-const DEMOS = ['async-shortcomings', 'generator-function', 'compose-pipe'];
+const DEMOS = [
+  'compose-pipe',
+  'generator-function',
+  'generator-task',
+  'async-shortcomings'
+];
 const EXERCISES = [
   'array-hof',
   'subscribe-to-observables',
@@ -32,7 +37,10 @@ const generateExampleInfo = (key, arr) =>
         template: `./src/${key}/${id}-${item}/index.hbs`,
         outfile: `./${key}/${id}-${item}/index.html`
       },
-      entry: { name: `${key}/${id}-${item}/index`, file: `./src/${key}/${id}-${item}/index.ts` }
+      entry: {
+        name: `${key}/${id}-${item}/index`,
+        file: `./src/${key}/${id}-${item}/index.ts`
+      }
     };
   }, {});
 

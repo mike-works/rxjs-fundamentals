@@ -72,7 +72,10 @@ let buttonSubs = setupButton1();
  * - EXERCISE 3.B - Explicit Cancellation
  */
 
-function cancelWhen<T>(obs: Observable<T>, cancelWhenFires: Observable<any>): Observable<T> {
+function cancelWhen<T>(
+  obs: Observable<T>,
+  cancelWhenFires: Observable<any>
+): Observable<T> {
   return new Observable<T>(observer => {
     let mainSubs = obs.subscribe(observer);
     let cancelSubs = cancelWhenFires.subscribe(() => {

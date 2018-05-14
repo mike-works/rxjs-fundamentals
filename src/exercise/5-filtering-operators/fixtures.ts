@@ -1,8 +1,8 @@
 import { Object as JSONObject } from 'json-typescript';
 import { of, Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { map, mergeAll } from 'rxjs/operators';
 import { EventTargetLike } from 'rxjs/internal/observable/fromEvent';
+import { map, mergeAll } from 'rxjs/operators';
 import SynthEventTarget from '../../common/synth-event-target';
 
 export function pictureUrl(path: string, width: number = 300) {

@@ -1,6 +1,6 @@
+import { interval, Subscription } from 'rxjs';
 import { EventTargetLike } from 'rxjs/internal/observable/fromEvent';
 import SynthEventTarget from '../../common/synth-event-target';
-import { interval, Subscription } from 'rxjs';
 
 export const synthButton1 = new SynthEventTarget();
 export const button1: EventTargetLike =
@@ -33,7 +33,8 @@ export const button5: EventTargetLike =
     : (document.getElementById('button5') as HTMLButtonElement);
 
 export const synthDoc = new SynthEventTarget();
-export const doc: EventTargetLike = typeof window === 'undefined' ? synthDoc : document;
+export const doc: EventTargetLike =
+  typeof window === 'undefined' ? synthDoc : document;
 
 let beaconCount = 0;
 export const BEACON_INFO = {
@@ -51,12 +52,16 @@ export function setupBeacon(delay: number, callback: () => void): Beacon {
   let subs = interval(delay).subscribe(callback);
   let id = ++beaconCount;
   let beacon = { subs, id };
-  console.log(`[Beacon]: Setup for #${beacon.id} (current count = ${beaconCount})`);
+  console.log(
+    `[Beacon]: Setup for #${beacon.id} (current count = ${beaconCount})`
+  );
   return beacon;
 }
 
 export function cleanupBeacon(beacon: Beacon) {
   beacon.subs.unsubscribe();
   beaconCount--;
-  console.log(`[Beacon]: Cleanup for #${beacon.id} (current count = ${beaconCount})`);
+  console.log(
+    `[Beacon]: Cleanup for #${beacon.id} (current count = ${beaconCount})`
+  );
 }

@@ -10,7 +10,9 @@ import { nextValueFrom } from './helpers';
 class SubscribeToAjaxObservableTests {
   private val!: AjaxResponse;
   public async before() {
-    this.val = await nextValueFrom(observableFromAjax);
+    this.val = await nextValueFrom(
+      observableFromAjax('https://api.mike.works/api/v1/courses')
+    );
   }
   @test('Emits something')
   public valueType() {
@@ -26,15 +28,23 @@ class SubscribeToAjaxObservableTests {
   @test('Emits an object that has a "data" property with an array value')
   public valueType3() {
     assert.isArray(this.val.response.data);
-    assert.isAtLeast(this.val.response.data.length, 3, 'at least three items in the array');
+    assert.isAtLeast(
+      this.val.response.data.length,
+      3,
+      'at least three items in the array'
+    );
   }
 
   @test('Every object in the "data" array has an "attributes" object')
   public valueType4() {
-    assert.ok(this.val.response.data.every(x => typeof x.attributes === 'object'));
+    assert.ok(
+      this.val.response.data.every(x => typeof x.attributes === 'object')
+    );
   }
 
-  @test('Every object\'s "attributes" object contains a "course-number" and "title" property')
+  @test(
+    'Every object\'s "attributes" object contains a "course-number" and "title" property'
+  )
   public valueType5() {
     assert.ok(
       this.val.response.data.every(

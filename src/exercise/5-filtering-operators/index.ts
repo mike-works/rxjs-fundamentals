@@ -1,11 +1,11 @@
 import { fromEvent } from 'rxjs';
-import { filter, toArray, map } from 'rxjs/operators';
+import { filter, map, toArray } from 'rxjs/operators';
 import {
+  clearResults,
   getSearchInputValue,
   multiSearch,
-  submitSearch,
   setResults,
-  clearResults
+  submitSearch
 } from './fixtures';
 
 fromEvent(submitSearch, 'click').subscribe(() => {

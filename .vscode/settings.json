@@ -10,6 +10,7 @@
   "[handlebars]": {
     "editor.formatOnSave": false
   },
-  "mocha.files.glob": "test/**/*.test.ts",
-  "mocha.requires": ["ts-node/register"]
+  "mocha.files.glob": "test/**/*.ts",
+  "mocha.logVerbose": true,
+  "mocha.requires": ["ts-node/register", "test/include.ts"]
 }

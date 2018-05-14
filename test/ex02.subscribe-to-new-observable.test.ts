@@ -9,7 +9,9 @@ import { newObservable } from '../src/exercise/2-subscribe-to-observables';
 class SubscribeToNewObservableTests {
   private vals!: number[];
   public async before() {
-    this.vals = await newObservable.pipe(toArray()).toPromise();
+    this.vals = await newObservable()
+      .pipe(toArray())
+      .toPromise();
   }
   @test('At least one value in the sequence')
   public numValues() {
@@ -18,14 +20,14 @@ class SubscribeToNewObservableTests {
 
   @test('All values in the sequence are numbers')
   public valueTypes() {
-    assert.ok(this.vals.every(x => typeof x === 'number'));
+    assert.ok(this.vals.every(z => typeof z === 'number'));
   }
 
   @test('Every value except the last is <= 90')
   public middleValues() {
     if (this.vals.length > 1) {
       assert.ok(
-        this.vals.slice(0, this.vals.length - 1).every(x => x <= 90),
+        this.vals.slice(0, this.vals.length - 1).every(s => s <= 90),
         `Every value in the sequence except the last one is less than 90 - ${JSON.stringify(
           this.vals,
           null,

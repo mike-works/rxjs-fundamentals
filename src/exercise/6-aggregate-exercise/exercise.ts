@@ -1,7 +1,14 @@
-import { concat, fromEvent, interval, ConnectableObservable, Observable, Subject } from 'rxjs';
+import {
+  concat,
+  fromEvent,
+  interval,
+  ConnectableObservable,
+  Observable,
+  Subject
+} from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { EventTargetLike } from 'rxjs/internal/observable/fromEvent';
-import { concatAll, flatMap, map, multicast } from 'rxjs/operators';
+import { concatAll, flatMap, map, multicast, tap } from 'rxjs/operators';
 import { addLogPanelMessage } from '../../common/log-panel';
 import SynthEventTarget from '../../common/synth-event-target';
 import './img/bike.svg';
@@ -20,7 +27,7 @@ export interface ExerciseInfo {
 }
 export const exerciseSubject = new Subject<ExerciseInfo>();
 let $source = interval(200).pipe(
-  map(() => ajax('/api/ex6/workout-data')),
+  map(() => ajax('/api/workout')),
   concatAll(),
   map(r => r.response as ExerciseInfo),
   multicast(exerciseSubject)
@@ -51,7 +58,9 @@ export function updateActivity(name: string) {
   if ($el === null) {
     throw new Error('No .activity-indicator found');
   }
-  $el.classList.remove(...['bike', 'run', 'weights', 'swim'].filter(n => n !== name));
+  $el.classList.remove(
+    ...['bike', 'run', 'weights', 'swim'].filter(n => n !== name)
+  );
   $el.classList.add(name);
 }
 
@@ -88,7 +97,10 @@ updateCalories(0);
 updateHeartrate(88);
 
 exerciseSubject.subscribe(ex => {
-  addLogPanelMessage('panel6', `${ex.name}: ${ex.calories} cal, ${ex.distance} mi, ${ex.time} sec`);
+  addLogPanelMessage(
+    'panel6',
+    `${ex.name}: ${ex.calories} cal, ${ex.distance} mi, ${ex.time} sec`
+  );
 });
 
 let exSubscription;

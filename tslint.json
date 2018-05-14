@@ -9,6 +9,7 @@
     "trailing-comma": false,
     "max-line-length": false,
     "object-literal-sort-keys": false,
+    "curly": false,
     "ordered-imports": [
       true,
       {
@@ -24,6 +25,7 @@
   },
   "jsrules": {
     "no-unused-variable": [true],
+    "curly": false,
     "no-console": false,
     "semicolon": false,
     "space-before-function-paren": false,
