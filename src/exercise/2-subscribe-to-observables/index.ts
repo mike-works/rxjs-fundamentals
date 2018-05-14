@@ -15,6 +15,10 @@ import {
  *
  * ?    <button id='button1'><button>
  *
+ *    which can be retrieved like this
+ *
+ * ?  let button1: HTMLButtonElement = buttonOne();
+ *
  *    and calls
  *
  * ?    addLogPanelMessage('panel2a', ... );
@@ -41,8 +45,8 @@ export function observableFromEvent() {
  * ?     addLogPanelMessage('panel2b', ... );
  */
 
-export function observableFromAjax(url) {
-  let o = ajax(url);
+export function observableFromAjax() {
+  let o = ajax('http://localhost:8080/api/workout');
   o.subscribe(({ response: workout }) => {
     addLogPanelMessage(
       'panel2b',
@@ -63,8 +67,8 @@ export function observableFromAjax(url) {
  * ?     addLogPanelMessage('panel2c', ... );
  */
 
-export function observableFromPromise<T>(p: Promise<T>): Observable<T> {
-  let o = from(p);
+export function observableFromPromise(): Observable<NotificationPermission> {
+  let o = from(Notification.requestPermission());
   o.subscribe(r => {
     addLogPanelMessage('panel2c', `Resolved value: ${r}`);
   });
@@ -72,7 +76,7 @@ export function observableFromPromise<T>(p: Promise<T>): Observable<T> {
 }
 
 export function observableForNotoficationPermission() {
-  return observableFromPromise(requestNotificationPermission());
+  return observableFromPromise();
 }
 
 /**
@@ -104,7 +108,7 @@ export function newObservable(): Observable<number> {
 
 /**
  * - Exercise 2.E
- * > Convert the browser geolocation API
+ * > We have a function that accepts a callback called
  *
  * ?    navigator.geolocation.getCurrentPosition
  *
@@ -120,7 +124,9 @@ export function newObservable(): Observable<number> {
  */
 
 export function observableFromCallback() {
-  let o = bindCallback<Position>(requestLocation)();
+  let o = bindCallback<Position>(
+    navigator.geolocation.getCurrentPosition.bind(navigator.geolocation)
+  )();
 
   o.subscribe(p => {
     addLogPanelMessage(
@@ -134,11 +140,9 @@ export function observableFromCallback() {
 if (IS_BROWSER) {
   console.log('Running browser samples');
   observableFromEvent().toPromise();
-  observableFromAjax('http://localhost:8080/api/workout').toPromise();
+  observableFromAjax().toPromise();
 
-  observableFromPromise(
-    fetch('http://localhost:8080/api/workout').then(res => res.json())
-  ).toPromise();
+  observableFromPromise().toPromise();
   newObservable().toPromise();
   observableFromCallback();
 }

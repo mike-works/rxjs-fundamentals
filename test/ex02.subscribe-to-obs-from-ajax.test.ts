@@ -10,9 +10,7 @@ import { nextValueFrom } from './helpers';
 class SubscribeToAjaxObservableTests {
   private val!: AjaxResponse;
   public async before() {
-    this.val = await nextValueFrom(
-      observableFromAjax('https://api.mike.works/api/v1/courses')
-    );
+    this.val = await nextValueFrom(observableFromAjax());
   }
   @test('Emits something')
   public valueType() {

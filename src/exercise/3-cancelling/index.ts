@@ -1,12 +1,12 @@
 import {
   fromEvent,
   observable,
-  MonoTypeOperatorFunction,
   Observable,
   Observer,
   OperatorFunction
 } from 'rxjs';
-import { map, take, takeUntil, takeWhile } from 'rxjs/operators';
+import { take, takeUntil, takeWhile } from 'rxjs/operators';
+import { IS_BROWSER } from '../../common/env';
 import { addLogPanelMessage } from '../../common/log-panel';
 import {
   button1,
@@ -18,60 +18,78 @@ import {
   doc,
   setupBeacon
 } from './fixtures';
-let o1 = fromEvent<MouseEvent>(button1, 'click');
-let o2 = fromEvent<MouseEvent>(button2, 'click');
-let o3 = fromEvent<MouseEvent>(button3, 'click');
-let o4 = fromEvent<MouseEvent>(button4, 'click');
-let o5 = fromEvent<MouseEvent>(button5, 'click');
-
 /**
  * - EXERCISE 3.A - Implicit Cancellation
+ *
+ * Finish the function below, which can apply operators
+ * that limit an observable
+ *
+ * ? condition
+ *    cancel when a stopping condition is reached, based on emitted values
+ * ? maxEvents
+ *    cancel after a fixed number of events
+ * ? until
+ *    cancel when another observable fires
  */
+
+interface FinishWhenOptions<T> {
+  condition?: (val: T) => boolean;
+  maxEvents?: number;
+  until?: Observable<any>;
+}
 
 function finishWhen<T>(
   obs: Observable<T>,
   {
-    condition,
+    condition, // a function
     maxEvents,
     until
-  }: {
-    condition?: (val: T) => boolean;
-    maxEvents?: number;
-    until?: Observable<any>;
-  } = {}
+  }: FinishWhenOptions<T> = {}
 ): Observable<T> {
-  let ops: Array<MonoTypeOperatorFunction<T>> = [];
+  let limitedObservable: Observable<T> = obs;
   if (typeof condition !== 'undefined') {
-    ops.push(takeWhile(condition));
+    limitedObservable = takeWhile(condition)(limitedObservable);
   }
   if (typeof maxEvents !== 'undefined') {
-    ops.push(take(maxEvents));
+    limitedObservable = take<T>(maxEvents)(limitedObservable);
   }
   if (typeof until !== 'undefined') {
-    ops.push(takeUntil(until));
+    limitedObservable = takeUntil<T>(until)(limitedObservable);
   }
-  return obs.pipe(...ops);
+  return limitedObservable;
 }
 
-function setupButton1() {
-  let sub = o1.subscribe(() => {
-    sub.unsubscribe();
-    finishWhen(fromEvent<MouseEvent>(doc, 'mousemove'), {
-      condition: m => m.y > 40,
-      maxEvents: 100,
-      until: o1
-    }).subscribe(e => {
-      addLogPanelMessage('panel3a', `Mouse is at: ${e.x}, ${e.y}`);
+// Example code for using finishWhen
+(() => {
+  function setupButton1() {
+    // Observer for clicks on button 1
+    let obsButton1 = fromEvent<MouseEvent>(button1, 'click');
+    let sub = obsButton1.subscribe(() => {
+      // on click
+      sub.unsubscribe(); // stop listening for new clicks
+      // Create an observable from mouse move event
+      let obsMouseMove = fromEvent<MouseEvent>(doc, 'mousemove');
+      finishWhen(obsMouseMove, {
+        condition: m => m.y > 40, // cursor is 40px from top of screen
+        maxEvents: 100, // 100 total events fired
+        until: obsButton1 // button 1 is clicked again
+      }).subscribe(e => {
+        // This logging should stop once ANY of the above conditions are met
+        addLogPanelMessage('panel3a', `Mouse is at: ${e.x}, ${e.y}`);
+      });
     });
-  });
-  return sub;
-}
-let buttonSubs = setupButton1();
+    return sub;
+  }
+  let buttonSubs = setupButton1();
+})();
 
 /**
  * - EXERCISE 3.B - Explicit Cancellation
+ *
+ * Complete the function below, u
  */
 
+// Example code for using cancelWhen
 function cancelWhen<T>(
   obs: Observable<T>,
   cancelWhenFires: Observable<any>
@@ -86,12 +104,18 @@ function cancelWhen<T>(
   });
 }
 
-o2.subscribe(() => {
-  console.log('start');
-  cancelWhen(fromEvent<MouseEvent>(doc, 'mousemove'), o3).subscribe(e => {
-    addLogPanelMessage('panel3b', `Mouse is at: ${e.x}, ${e.y}`);
+(() => {
+  let obsButton2 = fromEvent<MouseEvent>(button2, 'click');
+  let obsButton3 = fromEvent<MouseEvent>(button3, 'click');
+  obsButton2.subscribe(() => {
+    console.log('start');
+    cancelWhen(fromEvent<MouseEvent>(doc, 'mousemove'), obsButton3).subscribe(
+      e => {
+        addLogPanelMessage('panel3b', `Mouse is at: ${e.x}, ${e.y}`);
+      }
+    );
   });
-});
+})();
 
 /**
  * - EXERCISE 3.C - Cleaning Up Internal Resources
@@ -107,27 +131,32 @@ export function setupSelfCleaningObservable<T, R>(
   });
 }
 
-o4.subscribe(() => {
-  let oo = setupSelfCleaningObservable(
-    observer => {
-      let a = 1;
-      let b = 0;
-      let task = setupBeacon(500, () => {
-        let c = a + b;
-        observer.next(c);
-        a = b;
-        b = c;
-      });
-      return { task };
-    },
-    ({ task }) => {
-      cleanupBeacon(task);
-    }
-  );
-  let subscription = oo.subscribe(x => {
-    addLogPanelMessage('panel3c', `Value is: ${x}`);
+(() => {
+  let obsButton4 = fromEvent<MouseEvent>(button4, 'click');
+  let obsButton5 = fromEvent<MouseEvent>(button5, 'click');
+
+  obsButton4.subscribe(() => {
+    let oo = setupSelfCleaningObservable(
+      observer => {
+        let a = 1;
+        let b = 0;
+        let task = setupBeacon(500, () => {
+          let c = a + b;
+          observer.next(c);
+          a = b;
+          b = c;
+        });
+        return { task };
+      },
+      ({ task }) => {
+        cleanupBeacon(task);
+      }
+    );
+    let subscription = oo.subscribe(x => {
+      addLogPanelMessage('panel3c', `Value is: ${x}`);
+    });
+    obsButton5.subscribe(() => {
+      subscription.unsubscribe();
+    });
   });
-  o5.subscribe(() => {
-    subscription.unsubscribe();
-  });
-});
+})();
