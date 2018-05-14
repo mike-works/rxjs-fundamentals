@@ -45,12 +45,3 @@ let o = new Observable<number>(observer => {
     x++;
   }, 1000);
 });
-
-let oo = from(fetch('https://api.mike.works/api/v1/courses'));
-
-(async () => {
-  await timeout(1000);
-  console.log('start');
-  await oo.forEach(data => console.log(data));
-  console.log('finish');
-})();

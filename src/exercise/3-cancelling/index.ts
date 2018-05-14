@@ -109,11 +109,13 @@ function cancelWhen<T>(
   let obsButton3 = fromEvent<MouseEvent>(button3, 'click');
   obsButton2.subscribe(() => {
     console.log('start');
-    cancelWhen(fromEvent<MouseEvent>(doc, 'mousemove'), obsButton3).subscribe(
-      e => {
-        addLogPanelMessage('panel3b', `Mouse is at: ${e.x}, ${e.y}`);
-      }
-    );
+    let mouseMove = fromEvent<MouseEvent>(doc, 'mousemove');
+    cancelWhen(
+      mouseMove,
+      obsButton3 // button click
+    ).subscribe(e => {
+      addLogPanelMessage('panel3b', `Mouse is at: ${e.x}, ${e.y}`);
+    });
   });
 })();
 
@@ -121,42 +123,27 @@ function cancelWhen<T>(
  * - EXERCISE 3.C - Cleaning Up Internal Resources
  */
 
-export function setupSelfCleaningObservable<T, R>(
-  setupCallback: (observer: Observer<T>) => R,
-  cleanupCallback: (arg: R) => void
-): Observable<T> {
-  return new Observable<T>(observer => {
-    let setupInfo = setupCallback(observer);
-    return cleanupCallback.bind(null, setupInfo);
-  });
-}
-
-(() => {
+function setupTimerControls() {
   let obsButton4 = fromEvent<MouseEvent>(button4, 'click');
   let obsButton5 = fromEvent<MouseEvent>(button5, 'click');
 
+  // on button 4 click
+  let numTimers = 0;
   obsButton4.subscribe(() => {
-    let oo = setupSelfCleaningObservable(
-      observer => {
-        let a = 1;
-        let b = 0;
-        let task = setupBeacon(500, () => {
-          let c = a + b;
-          observer.next(c);
-          a = b;
-          b = c;
-        });
-        return { task };
-      },
-      ({ task }) => {
-        cleanupBeacon(task);
-      }
-    );
-    let subscription = oo.subscribe(x => {
-      addLogPanelMessage('panel3c', `Value is: ${x}`);
+    let id = numTimers++;
+    let timer = new Observable<number>(observer => {
+      let x = 0;
+      setInterval(() => {
+        observer.next(x++);
+        console.log(`Tick: ${id}`);
+      }, 500);
+    });
+    let subs = timer.subscribe(val => {
+      addLogPanelMessage('panel3c', `Counter ${id}: ${val}`);
     });
     obsButton5.subscribe(() => {
-      subscription.unsubscribe();
+      subs.unsubscribe();
     });
   });
-})();
+}
+setupTimerControls();
