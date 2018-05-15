@@ -46,8 +46,17 @@ function finishWhen<T>(
     until
   }: FinishWhenOptions<T> = {}
 ): Observable<T> {
-  // TODO: Implement your solution here. return an implicitly-cancelled version of this observable
-  return obs;
+  let limitedObservable: Observable<T> = obs;
+  if (typeof condition !== 'undefined') {
+    limitedObservable = takeWhile(condition)(limitedObservable);
+  }
+  if (typeof maxEvents !== 'undefined') {
+    limitedObservable = take<T>(maxEvents)(limitedObservable);
+  }
+  if (typeof until !== 'undefined') {
+    limitedObservable = takeUntil<T>(until)(limitedObservable);
+  }
+  return limitedObservable;
 }
 
 // Example code for using finishWhen
@@ -85,7 +94,14 @@ function cancelWhen<T>(
   cancelWhenFires: Observable<any>
 ): Observable<T> {
   // TODO: implement your solution here. Return a new observable that cancels when cancelWhenFires emits a value
-  return obs;
+  return new Observable<T>(observer => {
+    let mainSubs = obs.subscribe(observer);
+    let cancelSubs = cancelWhenFires.subscribe(() => {
+      console.log('stop');
+      mainSubs.unsubscribe();
+      cancelSubs.unsubscribe();
+    });
+  });
 }
 
 // Example code for using cancelWhen
@@ -120,7 +136,19 @@ function setupTimerControls() {
   let numTimers = 0;
   obsButton4.subscribe(() => {
     let id = numTimers++;
-    // TODO: Implement your solution here
+    let timer = new Observable<number>(observer => {
+      let x = 0;
+      setInterval(() => {
+        observer.next(x++);
+        console.log(`Tick: ${id}`);
+      }, 500);
+    });
+    let subs = timer.subscribe(val => {
+      addLogPanelMessage('panel3c', `Counter ${id}: ${val}`);
+    });
+    obsButton5.subscribe(() => {
+      subs.unsubscribe();
+    });
   });
 }
 setupTimerControls();
