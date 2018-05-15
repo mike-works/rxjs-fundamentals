@@ -11,6 +11,9 @@ export function forEach<T>(
   callbackfn: (value: T, index: number, array: T[]) => void
 ): void {
   // TODO: Implement your own solution
+  for (let i = 0; i < array.length; i++) {
+    callbackfn(array[i], i, array);
+  }
   // ! Do not use [].forEach or other built-in higher-order functions. That's cheating!
 }
 
@@ -28,7 +31,14 @@ export function map<T, U>(
   callbackfn: (value: T, index: number, array: T[]) => U
 ): U[] {
   // TODO: ↓ Replace this with your own solution ↓
-  return [];
+  return reduce(
+    array,
+    (transformed, item, idx, arr) => {
+      transformed.push(callbackfn(item, idx, array));
+      return transformed;
+    },
+    [] as U[]
+  );
   // ! Do not use [].map or other built-in higher-order functions. That's cheating!
 }
 
@@ -49,7 +59,14 @@ export function filter<T>(
   callbackfn: (value: T, index?: number, array?: T[]) => boolean
 ): T[] {
   // TODO: ↓ Replace this with your own solution ↓
-  return [];
+  return reduce(
+    array,
+    (filtered, item, idx, arr) => {
+      if (callbackfn(item, idx, array)) filtered.push(item);
+      return filtered;
+    },
+    [] as T[]
+  );
   // ! Do not use [].filter or other built-in higher-order functions. That's cheating!
 }
 
@@ -74,7 +91,11 @@ export function reduce<T, U>(
   initialValue: U
 ): U {
   // TODO: ↓ Replace this with your own solution ↓
-  return null as any;
+  let reducedVal = initialValue;
+  for (let i = 0; i < array.length; i++) {
+    reducedVal = callbackfn(reducedVal, array[i], i, array);
+  }
+  return reducedVal;
   // ! Do not use [].reduce or other built-in higher-order functions. That's cheating!
 }
 
@@ -91,6 +112,9 @@ export function some<T>(
   callbackfn: (value: T, index: number, array: T[]) => boolean
 ): boolean {
   // TODO: ↓ Replace this with your own solution ↓
+  for (let i = 0; i < array.length; i++) {
+    if (callbackfn(array[i], i, array)) return true;
+  }
   return false;
   // ! Do not use [].some or other built-in higher-order functions. That's cheating!
 }
@@ -108,6 +132,9 @@ export function every<T>(
   callbackfn: (value: T, index: number, array: T[]) => boolean
 ): boolean {
   // TODO: ↓ Replace this with your own solution ↓
-  return false;
+  for (let i = 0; i < array.length; i++) {
+    if (!callbackfn(array[i], i, array)) return false;
+  }
+  return true;
   // ! Do not use [].every or other built-in higher-order functions. That's cheating!
 }
