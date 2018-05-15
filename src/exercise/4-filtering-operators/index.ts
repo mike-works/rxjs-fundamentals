@@ -8,11 +8,4 @@ import {
   submitSearchButton // <button> user clicks for running a search
 } from './fixtures';
 
-fromEvent(submitSearchButton, 'click').subscribe(() => {
-  multiSearch(getSearchInputValue())
-    .pipe(filter(x => x.type === 'movie'), toArray())
-    .subscribe(item => {
-      clearResults();
-      setResults(item.map(i => `<li>${i.name || i.title} (${i.type})</li>`));
-    });
-});
+// TODO: implement your solution here
