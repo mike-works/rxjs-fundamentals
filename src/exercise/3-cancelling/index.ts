@@ -46,17 +46,8 @@ function finishWhen<T>(
     until
   }: FinishWhenOptions<T> = {}
 ): Observable<T> {
-  let limitedObservable: Observable<T> = obs;
-  if (typeof condition !== 'undefined') {
-    limitedObservable = takeWhile(condition)(limitedObservable);
-  }
-  if (typeof maxEvents !== 'undefined') {
-    limitedObservable = take<T>(maxEvents)(limitedObservable);
-  }
-  if (typeof until !== 'undefined') {
-    limitedObservable = takeUntil<T>(until)(limitedObservable);
-  }
-  return limitedObservable;
+  // TODO: Implement your solution here. return an implicitly-cancelled version of this observable
+  return obs;
 }
 
 // Example code for using finishWhen
@@ -86,24 +77,18 @@ function finishWhen<T>(
 /**
  * - EXERCISE 3.B - Explicit Cancellation
  *
- * Complete the function below, u
+ * Complete the function below, such that obs is cancelled when cancelWhenFires observable emits a value
  */
 
-// Example code for using cancelWhen
 function cancelWhen<T>(
   obs: Observable<T>,
   cancelWhenFires: Observable<any>
 ): Observable<T> {
-  return new Observable<T>(observer => {
-    let mainSubs = obs.subscribe(observer);
-    let cancelSubs = cancelWhenFires.subscribe(() => {
-      console.log('stop');
-      mainSubs.unsubscribe();
-      cancelSubs.unsubscribe();
-    });
-  });
+  // TODO: implement your solution here. Return a new observable that cancels when cancelWhenFires emits a value
+  return obs;
 }
 
+// Example code for using cancelWhen
 (() => {
   let obsButton2 = fromEvent<MouseEvent>(button2, 'click');
   let obsButton3 = fromEvent<MouseEvent>(button3, 'click');
@@ -121,6 +106,10 @@ function cancelWhen<T>(
 
 /**
  * - EXERCISE 3.C - Cleaning Up Internal Resources
+ *
+ *  When obsButton4 is clicked, start logging incrementing values every 500ms
+ *  Clicking button 4 repeteadly should cause new counters to start in parallel
+ *  Clicking button 5 should stop ALL timers, including any cleanup of setInterval
  */
 
 function setupTimerControls() {
@@ -131,19 +120,7 @@ function setupTimerControls() {
   let numTimers = 0;
   obsButton4.subscribe(() => {
     let id = numTimers++;
-    let timer = new Observable<number>(observer => {
-      let x = 0;
-      setInterval(() => {
-        observer.next(x++);
-        console.log(`Tick: ${id}`);
-      }, 500);
-    });
-    let subs = timer.subscribe(val => {
-      addLogPanelMessage('panel3c', `Counter ${id}: ${val}`);
-    });
-    obsButton5.subscribe(() => {
-      subs.unsubscribe();
-    });
+    // TODO: Implement your solution here
   });
 }
 setupTimerControls();
