@@ -17,7 +17,7 @@ class SubscribeToPromiseObservableTests {
   }
   @test('All values in the sequence are strings')
   public async valueTypes() {
-    let op = nextValueFrom(observableForNotoficationPermission());
+    let op = nextValueFrom(observableFromPromise());
     notificationPermission$.next('granted');
     let result = await op;
     assert.equal(typeof result, 'string');
