@@ -10,6 +10,7 @@
     "max-line-length": false,
     "object-literal-sort-keys": false,
     "curly": false,
+    "prefer-for-of": false,
     "ordered-imports": [
       true,
       {
@@ -19,7 +20,12 @@
     ],
     "quotemark": false,
     "arrow-parens": [false],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
     "await-promise": true,
     "prefer-const": [false]
   },
@@ -42,7 +48,12 @@
     ],
     "quotemark": false,
     "arrow-parens": [false],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
     "await-promise": true,
     "prefer-const": [false]
   }
