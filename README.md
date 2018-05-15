@@ -1,7 +1,7 @@
 <p align='center'>
   <a href="https://mike.works" target='_blank'>
     <img height=40 src='https://assets.mike.works/img/login_logo-33a9e523d451fb0d902f73d5452d4a0b.png' />
-  </a> 
+  </a>
 </p>
 <p align='center'>
   <a href="https://mike.works/course/rxjs-fundamentals-c26ec72" target='_blank'>
@@ -29,7 +29,7 @@ This is the example project used for the <a title="Mike.Works" href="https://mik
 
 # Where are the slides?
 
-* [RxJS Fundamentals](https://mike.works/course/rxjs-fundamentals-c26ec72) slides are [here](https://docs.mike.works/rxjs-slides)
+* [RxJS Fundamentals](https://mike.works/course/rxjs-fundamentals-c26ec72) slides are [here](https://docs.mike.works/rxjs-fundamentals)
 
 # Setup Instructions
 
@@ -106,10 +106,9 @@ npm run test:ex:watch 4
 
 # Build Status
 
-| Solutions Branch                                                                               | Status                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Solutions Branch                                                                    | Status                                                                                                                                                          |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [RxJS Fundamentals](https://github.com/mike-works/rxjs-fundamentals/tree/solutions) | [![Build Status](https://travis-ci.org/mike-works/rxjs-fundamentals.svg?branch=solutions)](https://travis-ci.org/mike-works/rxjs-fundamentals?branch=solutions) |
-
 
 # License
 
