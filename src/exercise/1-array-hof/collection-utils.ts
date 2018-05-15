@@ -10,9 +10,8 @@ export function forEach<T>(
   array: T[],
   callbackfn: (value: T, index: number, array: T[]) => void
 ): void {
-  // TODO: ↓ Replace this with your own solution ↓
-  array.forEach(callbackfn);
-  // ! Do not use [].forEach or other higher-order functions. That's cheating!
+  // TODO: Implement your own solution
+  // ! Do not use [].forEach or other built-in higher-order functions. That's cheating!
 }
 
 /**
@@ -24,10 +23,13 @@ export function forEach<T>(
  * @param callbackfn transformation function
  * @return transformed items
  */
-export function map<T, U>(array: T[], callbackfn: (value: T, index: number, array: T[]) => U): U[] {
+export function map<T, U>(
+  array: T[],
+  callbackfn: (value: T, index: number, array: T[]) => U
+): U[] {
   // TODO: ↓ Replace this with your own solution ↓
-  return array.map(callbackfn);
-  // ! Do not use [].map or other higher-order functions. That's cheating!
+  return [];
+  // ! Do not use [].map or other built-in higher-order functions. That's cheating!
 }
 
 /**
@@ -47,8 +49,8 @@ export function filter<T>(
   callbackfn: (value: T, index?: number, array?: T[]) => boolean
 ): T[] {
   // TODO: ↓ Replace this with your own solution ↓
-  return array.filter(callbackfn);
-  // ! Do not use [].filter or other higher-order functions. That's cheating!
+  return [];
+  // ! Do not use [].filter or other built-in higher-order functions. That's cheating!
 }
 
 /**
@@ -63,12 +65,17 @@ export function filter<T>(
  */
 export function reduce<T, U>(
   array: T[],
-  callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+  callbackfn: (
+    previousValue: U,
+    currentValue: T,
+    currentIndex: number,
+    array: T[]
+  ) => U,
   initialValue: U
 ): U {
   // TODO: ↓ Replace this with your own solution ↓
-  return array.reduce(callbackfn, initialValue);
-  // ! Do not use [].reduce or other higher-order functions. That's cheating!
+  return null as any;
+  // ! Do not use [].reduce or other built-in higher-order functions. That's cheating!
 }
 
 /**
@@ -84,8 +91,8 @@ export function some<T>(
   callbackfn: (value: T, index: number, array: T[]) => boolean
 ): boolean {
   // TODO: ↓ Replace this with your own solution ↓
-  return array.some(callbackfn);
-  // ! Do not use [].some or other higher-order functions. That's cheating!
+  return false;
+  // ! Do not use [].some or other built-in higher-order functions. That's cheating!
 }
 
 /**
@@ -101,6 +108,6 @@ export function every<T>(
   callbackfn: (value: T, index: number, array: T[]) => boolean
 ): boolean {
   // TODO: ↓ Replace this with your own solution ↓
-  return array.every(callbackfn);
-  // ! Do not use [].every or other higher-order functions. That's cheating!
+  return false;
+  // ! Do not use [].every or other built-in higher-order functions. That's cheating!
 }
