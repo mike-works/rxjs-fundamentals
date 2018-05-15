@@ -1,5 +1,5 @@
-import { bindCallback, from, fromEvent, of, Observable } from 'rxjs';
-import { ajax } from 'rxjs/ajax';
+import { bindCallback, from, fromEvent, of, Observable, range } from 'rxjs';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { first, take, toArray } from 'rxjs/operators';
 import '../../common/ajax';
 import { IS_BROWSER } from '../../common/env';
@@ -26,13 +26,9 @@ import {
  *    to log the x and y coordinates of the click to the screen
  */
 
-export function observableFromEvent() {
-  let o = fromEvent<MouseEvent>(buttonOne(), 'click');
-
-  o.subscribe(me => {
-    addLogPanelMessage('panel2a', `Mouse ${me.x}, ${me.y}`);
-  });
-  return o;
+export function observableFromEvent(): Observable<MouseEvent> {
+  // TODO: Replace this with your own solution
+  return of(null as any);
 }
 /**
  * - Exercise 2.B
@@ -45,15 +41,9 @@ export function observableFromEvent() {
  * ?     addLogPanelMessage('panel2b', ... );
  */
 
-export function observableFromAjax() {
-  let o = ajax('https://api.mike.works/api/v1/courses');
-  o.subscribe(({ response }) => {
-    let courses = response.data;
-    courses.forEach(course =>
-      addLogPanelMessage('panel2b', `${course.attributes.title}`)
-    );
-  });
-  return o;
+export function observableFromAjax(): Observable<AjaxResponse> {
+  // TODO: Replace this with your own solution
+  return of(null as any);
 }
 
 /**
@@ -68,15 +58,8 @@ export function observableFromAjax() {
  */
 
 export function observableFromPromise(): Observable<NotificationPermission> {
-  let o = from(Notification.requestPermission());
-  o.subscribe(r => {
-    addLogPanelMessage('panel2c', `Resolved value: ${r}`);
-  });
-  return o;
-}
-
-export function observableForNotoficationPermission() {
-  return observableFromPromise();
+  // TODO: Replace this with your own solution
+  return of(null as any);
 }
 
 /**
@@ -88,22 +71,8 @@ export function observableForNotoficationPermission() {
  * ?     addLogPanelMessage('panel2d', ... );
  */
 export function newObservable(): Observable<number> {
-  let o = new Observable<number>(observer => {
-    function scheduleNextVal() {
-      let x = Math.round(Math.random() * 100);
-      observer.next(x);
-      if (x > 90) {
-        observer.complete();
-      } else {
-        setTimeout(scheduleNextVal, x);
-      }
-    }
-    scheduleNextVal();
-  });
-  o.subscribe(v => {
-    addLogPanelMessage('panel2d', `Random wait: ${v}ms`);
-  });
-  return o;
+  // TODO: Replace this with your own solution
+  return of(1);
 }
 
 /**
@@ -123,18 +92,9 @@ export function newObservable(): Observable<number> {
  * ?    addLogPanelMessage('panel2e', ... );
  */
 
-export function observableFromCallback() {
-  let o = bindCallback<Position>(
-    navigator.geolocation.getCurrentPosition.bind(navigator.geolocation)
-  )();
-
-  o.subscribe(p => {
-    addLogPanelMessage(
-      'panel2e',
-      `Position: ${p.coords.latitude}, ${p.coords.longitude}`
-    );
-  });
-  return o;
+export function observableFromCallback(): Observable<Position> {
+  // TODO: Replace this with your own solution
+  return of(null as any);
 }
 
 if (IS_BROWSER) {
