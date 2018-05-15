@@ -78,6 +78,7 @@ const WEBPACK_CONFIG: Configuration = {
     ...EXERCISE_ENTRIES,
     ...DEMO_ENTRIES
   },
+  devtool: 'cheap-source-map',
   mode: 'development',
   devServer: {
     before(app) {

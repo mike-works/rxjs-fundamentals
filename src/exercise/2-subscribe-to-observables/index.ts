@@ -34,9 +34,9 @@ export function observableFromEvent(): Observable<MouseEvent> {
  * - Exercise 2.B
  * > Create an observable that fetches data from
  *
- * ?     http://localhost:8080/api/workout
+ * ?     https://api.mike.works/api/v1/courses
  *
- *    and logs the "heartRate" and "calories" of the response to the screen
+ *    and iterates over the data array, logging item.attributes.title to the screen
  *
  * ?     addLogPanelMessage('panel2b', ... );
  */

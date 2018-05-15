@@ -31,13 +31,21 @@ function redFruits() {
   let i = 0;
   return {
     next() {
-      return { value: RED_FRUITS_4[i++], done: i >= RED_FRUITS_4.length };
+      return {
+        value: RED_FRUITS_4[i++],
+        done: i >= RED_FRUITS_4.length
+      };
     }
   };
 }
 
 (() => {
   let it: Iterator<string> = redFruits();
+  console.log('[Demo 2.B] ', it.next().value);
+  console.log('[Demo 2.B] ', it.next().value);
+  console.log('[Demo 2.B] ', it.next().value);
+  console.log('[Demo 2.B] ', it.next().value);
+  console.log('[Demo 2.B] ', it.next().value);
 })();
 
 /**
@@ -96,7 +104,7 @@ function redFruits2() {
  * ! Demo 2.E - an ITERABLE is
  *
  * - an object with a function called Symbol.iterator
- * - when invoked, returns an iterator
+ * - when invoked, returns an Iterator
  */
 
 console.log('---------------------\n');
@@ -179,7 +187,7 @@ console.log('---------------------\n');
 (() => {
   function* mySequence() {
     let count = 0;
-    while (count <= 10) {
+    while (count < 10) {
       yield count++ * 3;
     }
   }
@@ -198,19 +206,27 @@ console.log('---------------------\n');
 console.log('---------------------\n');
 
 (() => {
-  const QUESTIONS = ['What is the year?', 'What is the month?', 'What is the day?'];
+  const QUESTIONS = [
+    'What is the year?',
+    'What is the month?',
+    'What is the day?'
+  ];
 
   function* askQuestions() {
     let answers: number[] = [];
     let i = 0;
+    debugger;
     while (i < QUESTIONS.length) {
+      debugger;
       let answer = yield QUESTIONS[i++];
+      debugger;
       answers.push(parseInt(answer, 10));
     }
     yield new Date(answers[0], answers[1], answers[2]);
   }
 
   let it: IterableIterator<string | Date> = askQuestions();
+  debugger;
   // First question
   console.log('[Demo 2.J] ', it.next().value); // What is the year?
   console.log('[Demo 2.J] ', it.next('2018').value); // What is the month?
