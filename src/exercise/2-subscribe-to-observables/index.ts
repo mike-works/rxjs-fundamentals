@@ -1,4 +1,12 @@
-import { bindCallback, from, fromEvent, of, Observable, range } from 'rxjs';
+import {
+  bindCallback,
+  from,
+  fromEvent,
+  of,
+  Observable,
+  range,
+  defer
+} from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { first, take, toArray } from 'rxjs/operators';
 import '../../common/ajax';
@@ -28,7 +36,11 @@ import {
 
 export function observableFromEvent(): Observable<MouseEvent> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let obs = fromEvent<MouseEvent>(buttonOne(), 'click');
+  obs.subscribe(evt => {
+    addLogPanelMessage('panel2a', `${evt.x}, ${evt.y}`);
+  });
+  return obs;
 }
 /**
  * - Exercise 2.B
@@ -42,8 +54,13 @@ export function observableFromEvent(): Observable<MouseEvent> {
  */
 
 export function observableFromAjax(): Observable<AjaxResponse> {
-  // TODO: Replace this with your own solution
-  return of(null as any);
+  let obs = ajax('https://api.mike.works/api/v1/courses');
+  obs.subscribe(resp => {
+    resp.response.data.forEach(course => {
+      addLogPanelMessage('panel2b', `${course.attributes.title}`);
+    });
+  });
+  return obs;
 }
 
 /**
@@ -59,7 +76,12 @@ export function observableFromAjax(): Observable<AjaxResponse> {
 
 export function observableFromPromise(): Observable<NotificationPermission> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let p = Notification.requestPermission();
+  let obs = defer(() => p);
+  obs.subscribe(resolvedVal => {
+    addLogPanelMessage('panel2c', `Permission status: ${resolvedVal}`);
+  });
+  return obs;
 }
 
 /**
@@ -72,7 +94,22 @@ export function observableFromPromise(): Observable<NotificationPermission> {
  */
 export function newObservable(): Observable<number> {
   // TODO: Replace this with your own solution
-  return of(1);
+  let obs = new Observable<number>(observer => {
+    function nextValue() {
+      let num = Math.round(Math.random() * 100);
+      setTimeout(() => {
+        // TODO what about unsubscribe?
+        observer.next(num); /* emit */
+        if (num > 90) observer.complete();
+        else nextValue();
+      }, num /* wait */);
+    }
+    nextValue();
+  });
+  obs.subscribe(val => {
+    addLogPanelMessage('panel2d', `sequence value: ${val}`);
+  });
+  return obs;
 }
 
 /**
@@ -94,7 +131,17 @@ export function newObservable(): Observable<number> {
 
 export function observableFromCallback(): Observable<Position> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  const getLoc = navigator.geolocation.getCurrentPosition.bind(
+    navigator.geolocation
+  );
+  let obs = bindCallback<Position>(getLoc)();
+  obs.subscribe(loc => {
+    addLogPanelMessage(
+      'panel2e',
+      `location: ${loc.coords.latitude}, ${loc.coords.longitude}`
+    );
+  });
+  return obs;
 }
 
 if (IS_BROWSER) {
