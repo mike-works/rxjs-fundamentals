@@ -46,11 +46,11 @@ export function observableFromEvent() {
  */
 
 export function observableFromAjax() {
-  let o = ajax('http://localhost:8080/api/workout');
-  o.subscribe(({ response: workout }) => {
-    addLogPanelMessage(
-      'panel2b',
-      `heartrate: ${workout.heartRate}, calories: ${workout.calories}`
+  let o = ajax('https://api.mike.works/api/v1/courses');
+  o.subscribe(({ response }) => {
+    let courses = response.data;
+    courses.forEach(course =>
+      addLogPanelMessage('panel2b', `${course.attributes.title}`)
     );
   });
   return o;
