@@ -3,6 +3,7 @@ import { of, Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { EventTargetLike } from 'rxjs/internal/observable/fromEvent';
 import { map, mergeAll } from 'rxjs/operators';
+import { IS_BROWSER } from '../../common/env';
 import SynthEventTarget from '../../common/synth-event-target';
 
 export function pictureUrl(path: string, width: number = 300) {
@@ -31,14 +32,13 @@ export function multiSearch(term): Observable<JSONObject> {
 }
 
 export const synthSubmitSearch = new SynthEventTarget();
-export const submitSearch: EventTargetLike =
-  typeof window === 'undefined'
-    ? synthSubmitSearch
-    : (document.querySelector('.submit-search') as HTMLButtonElement);
+export const submitSearchButton: EventTargetLike = !IS_BROWSER
+  ? synthSubmitSearch
+  : (document.querySelector('.submit-search') as HTMLButtonElement);
 
 export let synthSearchInputValue = '';
 export function getSearchInputValue(): string {
-  if (typeof window !== 'undefined') {
+  if (IS_BROWSER) {
     let $el = document.querySelector<HTMLInputElement>('.search-input');
     if ($el === null) {
       throw new Error('No .search-input found');
@@ -51,7 +51,7 @@ export function getSearchInputValue(): string {
 
 export let synthSearchResults: string[] = [];
 export function clearResults() {
-  if (typeof window !== 'undefined') {
+  if (IS_BROWSER) {
     let $el = document.querySelector<HTMLUListElement>('.results');
     if ($el === null) {
       throw new Error('No .results found');
@@ -63,7 +63,7 @@ export function clearResults() {
 }
 
 export function setResults(results: string[]) {
-  if (typeof window !== 'undefined') {
+  if (IS_BROWSER) {
     let $el = document.querySelector<HTMLUListElement>('.results');
     if ($el === null) {
       throw new Error('No .results found');

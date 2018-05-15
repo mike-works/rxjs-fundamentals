@@ -12,7 +12,16 @@ if (!(data instanceof Array)) {
 // 6 months in 2-hour increments
 const PRICE_DATA = (data as string[][]).map(
   ([timestamp, open, high, low, close, volumeBTC, volume, weightedPrice]) => {
-    return { timestamp, open, high, low, close, volumeBTC, volume, weightedPrice };
+    return {
+      timestamp,
+      open,
+      high,
+      low,
+      close,
+      volumeBTC,
+      volume,
+      weightedPrice
+    };
   }
 );
 
@@ -21,10 +30,11 @@ export default function(app) {
 
   const r = express.Router();
 
-  r.get('/price', () => {
+  r.get('/price', (req, resp) => {
     if (typeof firstRequestTime === 'undefined') {
       firstRequestTime = new Date().valueOf();
     }
+    resp.json({ foo: 'bar' });
   });
   return r;
 }

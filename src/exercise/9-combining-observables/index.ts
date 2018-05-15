@@ -1,5 +1,14 @@
 import { fromEvent, interval, BehaviorSubject, Observable } from 'rxjs';
-import { combineLatest, debounceTime, distinctUntilChanged, filter, map, merge, take, withLatestFrom } from 'rxjs/operators';
+import {
+  combineLatest,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  merge,
+  take,
+  withLatestFrom
+} from 'rxjs/operators';
 import './styles';
 
 const BALL_RADIUS = 10;
@@ -52,15 +61,31 @@ function drawPaddle(game: GameUI, side: 'left' | 'right') {
   ctxt.beginPath();
   ctxt.fillStyle = 'grey';
   if (side === 'left') {
-    ctxt.fillRect(PADDLE_OFFSET, y - PADDLE_HEIGHT, PADDLE_WIDTH, 2 * PADDLE_HEIGHT);
+    ctxt.fillRect(
+      PADDLE_OFFSET,
+      y - PADDLE_HEIGHT,
+      PADDLE_WIDTH,
+      2 * PADDLE_HEIGHT
+    );
   } else {
-    ctxt.fillRect(game.board.size.w - PADDLE_WIDTH - PADDLE_OFFSET, y - PADDLE_HEIGHT, PADDLE_WIDTH, 2 * PADDLE_HEIGHT);
+    ctxt.fillRect(
+      game.board.size.w - PADDLE_WIDTH - PADDLE_OFFSET,
+      y - PADDLE_HEIGHT,
+      PADDLE_WIDTH,
+      2 * PADDLE_HEIGHT
+    );
   }
   // ctxt.stroke();
 }
 
 function drawBall(game: GameUI, { x, y }: { x: number; y: number }) {
-  let { ctxt, cnv, board: { size: { w, h } } } = game;
+  let {
+    ctxt,
+    cnv,
+    board: {
+      size: { w, h }
+    }
+  } = game;
   // ctxt.clearRect(x - 2 * BALL_RADIUS, y - 2 * BALL_RADIUS, 4 * BALL_RADIUS, 4 * BALL_RADIUS);
   ctxt.beginPath();
   ctxt.fillStyle = 'red';
@@ -68,8 +93,18 @@ function drawBall(game: GameUI, { x, y }: { x: number; y: number }) {
   ctxt.fill();
 }
 
-function drawBallMotionVector(game: GameUI, { x, y }: { x: number; y: number }, angle: number) {
-  let { ctxt, cnv, board: { size: { w, h } } } = game;
+function drawBallMotionVector(
+  game: GameUI,
+  { x, y }: { x: number; y: number },
+  angle: number
+) {
+  let {
+    ctxt,
+    cnv,
+    board: {
+      size: { w, h }
+    }
+  } = game;
   ctxt.beginPath();
   ctxt.strokeStyle = 'yellow';
   ctxt.lineWidth = 2;
@@ -113,7 +148,9 @@ function setupGame(cnv: HTMLCanvasElement): GameUI {
   return game;
 }
 
-function boundedMouseMoveObservable(game: GameUI): Observable<{ x: number; y: number }> {
+function boundedMouseMoveObservable(
+  game: GameUI
+): Observable<{ x: number; y: number }> {
   const { cnv } = game;
   return fromEvent<MouseEvent>(window, 'mousemove').pipe(
     map(m => getMousePos(cnv, m)),
@@ -149,14 +186,20 @@ window.onload = () => {
     }
   });
 
-  boundedMouseMoveObservable(game).pipe(withLatestFrom(gameSubject)).subscribe(([p, g]) => {
-     let paddleL = p.y;
-     let paddleR = p.x / g.board.size.ratio;
-     let newGame = { ...g, paddleL, paddleR };
-     gameSubject.next(newGame);
-   });
+  boundedMouseMoveObservable(game)
+    .pipe(withLatestFrom(gameSubject))
+    .subscribe(([p, g]) => {
+      let paddleL = p.y;
+      let paddleR = p.x / g.board.size.ratio;
+      let newGame = { ...g, paddleL, paddleR };
+      gameSubject.next(newGame);
+    });
 
-  let { board: { size: { w, h } } } = game;
+  let {
+    board: {
+      size: { w, h }
+    }
+  } = game;
   let ballSubject = new BehaviorSubject<Ball>({
     x: w / 2,
     y: h / 2,
@@ -164,15 +207,20 @@ window.onload = () => {
   });
 
   interval(30)
-    .pipe(
-      withLatestFrom(ballSubject, gameSubject)
-    ).forEach(([_, ball, g]) => {
+    .pipe(withLatestFrom(ballSubject, gameSubject))
+    .forEach(([_, ball, g]) => {
       let { x, y, theta } = ball;
       x += 8 * Math.cos(theta);
       y -= 8 * Math.sin(theta);
-      if (x <= 20 + 2 * BALL_RADIUS && (y < (g.paddleL + PADDLE_HEIGHT) && (y > g.paddleL - PADDLE_HEIGHT))) {
+      if (
+        x <= 20 + 2 * BALL_RADIUS &&
+        (y < g.paddleL + PADDLE_HEIGHT && y > g.paddleL - PADDLE_HEIGHT)
+      ) {
         theta = Math.PI - theta;
-      } else if ((x > g.board.size.w - 20 - 2 * BALL_RADIUS) && (y < (g.paddleR + PADDLE_HEIGHT) && (y > g.paddleR - PADDLE_HEIGHT))) {
+      } else if (
+        x > g.board.size.w - 20 - 2 * BALL_RADIUS &&
+        (y < g.paddleR + PADDLE_HEIGHT && y > g.paddleR - PADDLE_HEIGHT)
+      ) {
         theta = Math.PI - theta;
       } else if (x <= 5 || x > g.board.size.w - 10) {
         // left/right wall bounce
@@ -189,7 +237,7 @@ window.onload = () => {
         // top/bottom wall bounce
         theta = -theta;
       }
-      ballSubject.next({ x, y, theta })
+      ballSubject.next({ x, y, theta });
     });
 
   ballSubject.pipe(withLatestFrom(gameSubject)).subscribe(([b, g]) => {

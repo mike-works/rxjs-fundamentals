@@ -8,14 +8,15 @@ const DEMOS = [
   'compose-pipe',
   'generator-function',
   'generator-task',
-  'async-shortcomings'
+  'async-shortcomings',
+  'filtering-colors'
 ];
 const EXERCISES = [
   'array-hof',
   'subscribe-to-observables',
   'cancelling',
-  'error-recovery',
   'filtering-operators',
+  'error-recovery',
   'aggregate-exercise',
   'subjects',
   'timing-operators',

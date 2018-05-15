@@ -1,6 +1,9 @@
 import { IS_BROWSER } from './env';
 
-export function addLogPanelMessage(panelId: string, message: string) {
+export function addLogPanelMessage(
+  panelId: string,
+  message: string | number | boolean
+) {
   if (IS_BROWSER) {
     let $panel = document.querySelector(
       `.log-panel[data-panel-id="${panelId}"]`
@@ -15,7 +18,7 @@ export function addLogPanelMessage(panelId: string, message: string) {
     $panelContents.innerText = existingText
       ? `${existingText}
 ${message}`
-      : message;
+      : `${message}`;
     $panelContents.scrollIntoView({ block: 'end' });
   }
 }
