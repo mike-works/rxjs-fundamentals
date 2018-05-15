@@ -28,7 +28,12 @@ import {
 
 export function observableFromEvent(): Observable<MouseEvent> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let o = fromEvent<MouseEvent>(buttonOne(), 'click');
+
+  o.subscribe(me => {
+    addLogPanelMessage('panel2a', `Mouse ${me.x}, ${me.y}`);
+  });
+  return o;
 }
 /**
  * - Exercise 2.B
@@ -43,7 +48,14 @@ export function observableFromEvent(): Observable<MouseEvent> {
 
 export function observableFromAjax(): Observable<AjaxResponse> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let o = ajax('https://api.mike.works/api/v1/courses');
+  o.subscribe(({ response }) => {
+    let courses = response.data;
+    courses.forEach(course =>
+      addLogPanelMessage('panel2b', `${course.attributes.title}`)
+    );
+  });
+  return o;
 }
 
 /**
@@ -59,7 +71,11 @@ export function observableFromAjax(): Observable<AjaxResponse> {
 
 export function observableFromPromise(): Observable<NotificationPermission> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let o = from(Notification.requestPermission());
+  o.subscribe(r => {
+    addLogPanelMessage('panel2c', `Resolved value: ${r}`);
+  });
+  return o;
 }
 
 /**
@@ -72,7 +88,22 @@ export function observableFromPromise(): Observable<NotificationPermission> {
  */
 export function newObservable(): Observable<number> {
   // TODO: Replace this with your own solution
-  return of(1);
+  let o = new Observable<number>(observer => {
+    function scheduleNextVal() {
+      let x = Math.round(Math.random() * 100);
+      observer.next(x);
+      if (x > 90) {
+        observer.complete();
+      } else {
+        setTimeout(scheduleNextVal, x);
+      }
+    }
+    scheduleNextVal();
+  });
+  o.subscribe(v => {
+    addLogPanelMessage('panel2d', `Random wait: ${v}ms`);
+  });
+  return o;
 }
 
 /**
@@ -94,7 +125,17 @@ export function newObservable(): Observable<number> {
 
 export function observableFromCallback(): Observable<Position> {
   // TODO: Replace this with your own solution
-  return of(null as any);
+  let o = bindCallback<Position>(
+    navigator.geolocation.getCurrentPosition.bind(navigator.geolocation)
+  )();
+
+  o.subscribe(p => {
+    addLogPanelMessage(
+      'panel2e',
+      `Position: ${p.coords.latitude}, ${p.coords.longitude}`
+    );
+  });
+  return o;
 }
 
 if (IS_BROWSER) {
