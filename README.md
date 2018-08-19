@@ -10,8 +10,8 @@
 </p>
 
 <p align='center'>
-  <a href="https://travis-ci.org/mike-works/rxjs-fundamentals?branch=solutions" title="Build Status">
-    <img title="Build Status" src="https://travis-ci.org/mike-works/rxjs-fundamentals.svg?branch=solutions"/>
+  <a href="https://travis-ci.org/mike-works/rxjs-fundamentals" title="Build Status">
+    <img title="Build Status" src="https://travis-ci.org/mike-works/rxjs-fundamentals.svg"/>
   </a>
   <a href="https://github.com/mike-works/rxjs-fundamentals/releases" title="Version">
     <img title="Version" src="https://img.shields.io/github/tag/mike-works/rxjs-fundamentals.svg" />
