@@ -13,14 +13,8 @@
   <a href="https://travis-ci.org/mike-works/rxjs-fundamentals?branch=solutions" title="Build Status">
     <img title="Build Status" src="https://travis-ci.org/mike-works/rxjs-fundamentals.svg?branch=solutions"/>
   </a>
-  <a href="https://mike.works/course/rxjs-fundamentals-c26ec72" title="RxJS Fundamentals">
-    <img title="Course Outline" src="https://img.shields.io/badge/mike.works-course%20outline-blue.svg"/>
-  </a>
-  <a href="https://docs.mike.works/rxjs-slides" title="Slides">
-    <img title="Slides" src="https://img.shields.io/badge/mike.works-slides-blue.svg"/>
-  </a>
-  <a title='GreenKeeper'>
-    <img title='GreenKeeper' src='https://badges.greenkeeper.io/mike-works/rxjs-fundamentals.svg'>
+  <a href="https://github.com/mike-works/rxjs-fundamentals/releases" title="Version">
+    <img title="Version" src="https://img.shields.io/github/tag/mike-works/rxjs-fundamentals.svg" />
   </a>
 </p>
 <p align='center'>
@@ -29,7 +23,7 @@ This is the example project used for the <a title="Mike.Works" href="https://mik
 
 # Where are the slides?
 
-* [RxJS Fundamentals](https://mike.works/course/rxjs-fundamentals-c26ec72) slides are [here](https://docs.mike.works/rxjs-fundamentals)
+- [RxJS Fundamentals](https://mike.works/course/rxjs-fundamentals-c26ec72) slides are [here](https://docs.mike.works/rxjs-fundamentals)
 
 # Setup Instructions
 
@@ -122,19 +116,19 @@ understanding of how these licenses work:
 
 ### OK
 
-* Using everything in this project other than the exercises (or accompanying tests)
+- Using everything in this project other than the exercises (or accompanying tests)
   to build a project used for your own free or commercial training material
-* Copying code from build scripts, configuration files, tests and development
+- Copying code from build scripts, configuration files, tests and development
   harnesses that are not part of the exercises specifically, for your own projects
-* As an owner of an individual license, using code from tests, exercises, or
+- As an owner of an individual license, using code from tests, exercises, or
   exercise solutions for your own non-training-related project.
 
 ### NOT OK (without express written consent)
 
-* Using this project, or any subset of
+- Using this project, or any subset of
   exercises contained within this project to run your own workshops
-* Writing a book that uses the code for these exercises
-* Recording a screencast that contains one or more of this project's exercises
+- Writing a book that uses the code for these exercises
+- Recording a screencast that contains one or more of this project's exercises
 
 # Copyright
 

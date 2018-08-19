@@ -1,6 +1,6 @@
 {
-  "name": "rx-workshop",
-  "version": "0.0.1",
+  "name": "@mike-works/rxjs-workshop",
+  "version": "0.0.0-development",
   "description": "Mike Works, Inc. RxJS 6 workshop",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,12 @@
     "test": "scripty",
     "test:ex": "scripty",
     "test:ex:watch": "scripty",
-    "test:watch": "./node_modules/.bin/mocha-typescript-watch"
+    "test:watch": "./node_modules/.bin/mocha-typescript-watch",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mike-works/rx-workshop.git"
+    "url": "https://github.com/mike-works/rx-workshop.git"
   },
   "keywords": [
     "rxjs",
@@ -32,10 +33,11 @@
     "node-fetch": "^2.1.2",
     "rxjs": "^6.0.0-rc.0",
     "socket.io": "^2.1.0",
-    "webpack-dev-server": "^3.1.2",
+    "webpack-dev-server": "^3.1.5",
     "xhr2": "^0.1.4"
   },
   "devDependencies": {
+    "@mike-works/workshop-semantic-release-config": "^1.0.0",
     "@types/chai": "^4.1.2",
     "@types/express": "^4.11.1",
     "@types/html-webpack-plugin": "^2.30.3",
@@ -55,10 +57,11 @@
     "mocha": "^5.0.5",
     "mocha-headless-chrome": "^1.8.2",
     "mocha-typescript": "^1.1.12",
-    "node-sass": "^4.8.3",
-    "nodemon": "^1.17.3",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.3",
     "sass-loader": "^6.0.7",
     "scripty": "^1.7.2",
+    "semantic-release": "^15.9.9",
     "source-map-support": "^0.5.4",
     "style-loader": "^0.20.3",
     "titleize": "^1.0.1",
@@ -68,5 +71,8 @@
     "typescript": "^2.8.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
+  },
+  "release": {
+    "extends": "@mike-works/workshop-semantic-release-config"
   }
 }
