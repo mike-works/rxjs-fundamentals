@@ -63,7 +63,7 @@
     "sass-loader": "^7.1.0",
     "scripty": "^1.7.2",
     "semantic-release": "^15.9.9",
-    "source-map-support": "^0.5.8",
+    "source-map-support": "^0.5.9",
     "style-loader": "^0.20.3",
     "titleize": "^1.0.1",
     "travis-deploy-once": "^5.0.2",
