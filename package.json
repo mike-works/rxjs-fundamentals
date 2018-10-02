@@ -32,7 +32,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "node-fetch": "^2.2.0",
-    "rxjs": "^6.3.1",
+    "rxjs": "^6.3.3",
     "socket.io": "^2.1.1",
     "webpack-dev-server": "^3.1.7",
     "xhr2": "^0.1.4"
