@@ -62,7 +62,7 @@
     "nodemon": "^1.18.4",
     "sass-loader": "^7.1.0",
     "scripty": "^1.8.0",
-    "semantic-release": "^15.9.16",
+    "semantic-release": "^15.10.6",
     "source-map-support": "^0.5.9",
     "style-loader": "^0.23.1",
     "titleize": "^1.0.1",
