@@ -58,7 +58,7 @@
     "mocha": "^5.2.0",
     "mocha-headless-chrome": "^2.0.1",
     "mocha-typescript": "^1.1.17",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.9.4",
     "nodemon": "^1.18.4",
     "sass-loader": "^7.1.0",
     "scripty": "^1.8.0",
