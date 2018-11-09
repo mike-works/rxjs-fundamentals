@@ -38,6 +38,7 @@
     "xhr2": "^0.1.4"
   },
   "devDependencies": {
+    "@mike-works/js-lib-renovate-config": "^2.0.0",
     "@mike-works/workshop-semantic-release-config": "^1.0.0",
     "@types/chai": "^4.1.7",
     "@types/express": "^4.16.0",
