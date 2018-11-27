@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.0...v1.0.1) (2018-11-27)
+
+
+### Bug Fixes
+
+* remove package-lock.json ([ee0310f](https://github.com/mike-works/rxjs-fundamentals/commit/ee0310f))
+* shared renovate config ([c124b9f](https://github.com/mike-works/rxjs-fundamentals/commit/c124b9f))
+
 # 1.0.0 (2018-08-19)
 
 
