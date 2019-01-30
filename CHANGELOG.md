@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.7...v1.0.8) (2019-01-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v6.4.0 ([ee67804](https://github.com/mike-works/rxjs-fundamentals/commit/ee67804))
+
 ## [1.0.7](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.6...v1.0.7) (2018-12-24)
 
 
