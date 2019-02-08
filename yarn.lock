@@ -874,10 +874,10 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
   integrity sha512-lAVp+Kj54ui/vLUFxsJTMtWvZraZxum3w3Nwkble2dNuV5VnPA+Mi2oGX9XYJAaIvZi3tn3cbjS/qcJXRb6Bww==
 
-"@types/node-fetch@2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.1.5.tgz#94f81fbb0cab2709a5275bbfab7ff93fd7d4bdc0"
-  integrity sha512-GuJUcxJt5VjAmkf23v5P2eBX6bVFp3ZVRFhuZhTLxAytlc8puxGDwdZAmQaV8l7A3mpm/xv14UjhSZIWt1UQAQ==
+"@types/node-fetch@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.1.6.tgz#4326288b49f352a142f03c63526ebce0f4c50877"
+  integrity sha512-Hv1jgh3pfpUEl2F2mqUd1AfLSk1YbUCeBJFaP36t7esAO617dErqdxWb5cdG2NfJGOofkmBW36fdx0dVewxDRg==
   dependencies:
     "@types/node" "*"
 
