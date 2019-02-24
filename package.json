@@ -71,7 +71,7 @@
     "ts-loader": "5.3.3",
     "ts-node": "8.0.2",
     "tslint": "5.11.0",
-    "typescript": "3.2.2",
+    "typescript": "3.2.4",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3"
   },
