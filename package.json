@@ -50,7 +50,7 @@
     "@types/webpack": "4.4.25",
     "browser-env": "3.2.6",
     "chai": "4.2.0",
-    "css-loader": "1.0.1",
+    "css-loader": "2.1.1",
     "file-loader": "2.0.0",
     "handlebars": "4.1.0",
     "handlebars-loader": "1.7.1",
