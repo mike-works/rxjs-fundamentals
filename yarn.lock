@@ -8931,10 +8931,10 @@ tiny-relative-date@^1.3.0:
   resolved "https://registry.yarnpkg.com/tiny-relative-date/-/tiny-relative-date-1.3.0.tgz#fa08aad501ed730f31cc043181d995c39a935e07"
   integrity sha512-MOQHpzllWxDCHHaDno30hhLfbouoYlOI8YlMNtvKe1zXbjEVhbcEovQxvZrPvtiYW630GQDoMMarCnjfyfHA+A==
 
-titleize@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/titleize/-/titleize-1.0.1.tgz#21bc24fcca658eadc6d3bd3c38f2bd173769b4c5"
-  integrity sha512-rUwGDruKq1gX+FFHbTl5qjI7teVO7eOe+C8IcQ7QT+1BK3eEUXJqbZcBOeaRP4FwSC/C1A5jDoIVta0nIQ9yew==
+titleize@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/titleize/-/titleize-2.0.0.tgz#c8a00677c918b7c43615a37c6453d52d0957f450"
+  integrity sha512-L0t8yLxg7677IsO8PllpQBcoEkISd7lTKLf6RZ7HAvu3aYkHW3Fr5Jse/igZ2ioJwaeLhNbbrcOXbmH3ta0NFg==
 
 tmp@^0.0.33:
   version "0.0.33"
