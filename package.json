@@ -31,7 +31,7 @@
   "homepage": "https://github.com/mike-works/rx-workshop#readme",
   "dependencies": {
     "express": "4.16.4",
-    "node-fetch": "2.3.0",
+    "node-fetch": "2.4.1",
     "rxjs": "6.5.1",
     "socket.io": "2.2.0",
     "webpack-dev-server": "3.3.1",
