@@ -1,3 +1,10 @@
+## [1.0.18](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.17...v1.0.18) (2019-05-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency webpack-dev-server to v3.4.0 ([c264409](https://github.com/mike-works/rxjs-fundamentals/commit/c264409))
+
 ## [1.0.17](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.16...v1.0.17) (2019-05-17)
 
 
