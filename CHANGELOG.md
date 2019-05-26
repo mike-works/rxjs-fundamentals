@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.19...v1.0.20) (2019-05-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency express to v4.17.1 ([cdf7d9e](https://github.com/mike-works/rxjs-fundamentals/commit/cdf7d9e))
+
 ## [1.0.19](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.18...v1.0.19) (2019-05-17)
 
 
