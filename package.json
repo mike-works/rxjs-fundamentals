@@ -35,7 +35,7 @@
     "rxjs": "6.5.2",
     "socket.io": "2.2.0",
     "webpack-dev-server": "3.4.1",
-    "xhr2": "0.1.4"
+    "xhr2": "0.2.0"
   },
   "devDependencies": {
     "@mike-works/js-lib-renovate-config": "2.0.0",
