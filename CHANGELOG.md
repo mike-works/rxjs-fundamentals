@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.20...v1.0.21) (2019-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency xhr2 to v0.2.0 ([2ef4101](https://github.com/mike-works/rxjs-fundamentals/commit/2ef4101))
+
 ## [1.0.20](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.19...v1.0.20) (2019-05-26)
 
 
