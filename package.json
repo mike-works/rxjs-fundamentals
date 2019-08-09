@@ -61,7 +61,7 @@
     "mocha-typescript": "1.1.17",
     "node-sass": "4.12.0",
     "nodemon": "1.19.1",
-    "sass-loader": "7.1.0",
+    "sass-loader": "7.2.0",
     "scripty": "1.9.1",
     "semantic-release": "15.13.19",
     "source-map-support": "0.5.13",
