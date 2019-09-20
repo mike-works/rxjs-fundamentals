@@ -1,3 +1,10 @@
+## [1.0.32](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.31...v1.0.32) (2019-09-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency socket.io to v2.3.0 ([f72a60d](https://github.com/mike-works/rxjs-fundamentals/commit/f72a60d))
+
 ## [1.0.31](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.30...v1.0.31) (2019-09-16)
 
 
