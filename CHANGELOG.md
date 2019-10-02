@@ -1,3 +1,10 @@
+## [1.0.33](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.32...v1.0.33) (2019-10-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency webpack-dev-server to v3.8.2 ([caedcdb](https://github.com/mike-works/rxjs-fundamentals/commit/caedcdb))
+
 ## [1.0.32](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.31...v1.0.32) (2019-09-20)
 
 
