@@ -34,7 +34,7 @@
     "node-fetch": "2.6.0",
     "rxjs": "6.5.4",
     "socket.io": "2.3.0",
-    "webpack-dev-server": "3.10.2",
+    "webpack-dev-server": "3.10.3",
     "xhr2": "0.2.0"
   },
   "devDependencies": {
