@@ -1,3 +1,10 @@
+## [1.0.41](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.40...v1.0.41) (2020-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency webpack-dev-server to v3.11.0 ([c074138](https://github.com/mike-works/rxjs-fundamentals/commit/c074138))
+
 ## [1.0.40](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.39...v1.0.40) (2020-04-03)
 
 
