@@ -1,3 +1,10 @@
+## [1.0.42](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.41...v1.0.42) (2020-07-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v6.6.0 ([32ee7ad](https://github.com/mike-works/rxjs-fundamentals/commit/32ee7ad))
+
 ## [1.0.41](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.40...v1.0.41) (2020-05-08)
 
 
