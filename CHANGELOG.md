@@ -1,3 +1,10 @@
+## [1.0.44](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.43...v1.0.44) (2020-09-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency node-fetch to v2.6.1 ([91f4321](https://github.com/mike-works/rxjs-fundamentals/commit/91f4321))
+
 ## [1.0.43](https://github.com/mike-works/rxjs-fundamentals/compare/v1.0.42...v1.0.43) (2020-07-31)
 
 
