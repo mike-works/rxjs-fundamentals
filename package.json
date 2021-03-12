@@ -49,7 +49,7 @@
     "@types/socket.io-client": "1.4.36",
     "@types/webpack": "4.41.26",
     "browser-env": "3.3.0",
-    "chai": "4.3.3",
+    "chai": "4.3.4",
     "css-loader": "3.6.0",
     "file-loader": "4.3.0",
     "handlebars": "4.7.7",
