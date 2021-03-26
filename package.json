@@ -47,7 +47,7 @@
     "@types/node-fetch": "2.5.8",
     "@types/socket.io": "2.1.13",
     "@types/socket.io-client": "1.4.36",
-    "@types/webpack": "4.41.26",
+    "@types/webpack": "4.41.27",
     "browser-env": "3.3.0",
     "chai": "4.3.4",
     "css-loader": "3.6.0",
