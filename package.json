@@ -62,7 +62,7 @@
     "node-sass": "4.14.1",
     "nodemon": "1.19.4",
     "sass-loader": "7.3.1",
-    "scripty": "1.9.1",
+    "scripty": "2.1.1",
     "semantic-release": "15.14.0",
     "source-map-support": "0.5.19",
     "style-loader": "0.23.1",
