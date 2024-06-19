@@ -47,7 +47,7 @@
     "@types/node-fetch": "2.5.11",
     "@types/socket.io": "2.1.13",
     "@types/socket.io-client": "1.4.36",
-    "@types/webpack": "4.41.30",
+    "@types/webpack": "5.28.5",
     "browser-env": "3.3.0",
     "chai": "4.3.4",
     "css-loader": "3.6.0",
@@ -72,7 +72,7 @@
     "ts-node": "8.10.2",
     "tslint": "5.17.0",
     "typescript": "3.5.3",
-    "webpack": "4.46.0",
+    "webpack": "5.92.1",
     "webpack-cli": "3.3.12"
   },
   "release": {
